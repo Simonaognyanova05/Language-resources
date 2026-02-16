@@ -14,7 +14,11 @@ export default function Login() {
         const { email, password } = Object.fromEntries(formData);
 
         try {
-            const result = login(email, password);
+            const result = await login(email, password);
+            if (!Boolean(result)) {
+                alert("Възникна грешка при влизане, моля опитайте по-късно!");
+            }
+            alert("Успешно влизане!");
             onLogin(result);
             navigate('/');
         } catch (error) {

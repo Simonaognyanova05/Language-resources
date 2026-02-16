@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
     return (
         <>
@@ -51,22 +53,22 @@ export default function Header() {
                                 <div class="d-flex  flex-column flex-lg-row align-items-center">
                                     <ul class="navbar-nav  ">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                            <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="about.html">About </a>
+                                            <Link class="nav-link" to="/about">About </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="fruit.html">Our Fruit </a>
+                                            <Link class="nav-link" to="/products">Our Fruit </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="testimonial.html">Testimonial</a>
+                                            <Link class="nav-link" to="/testimonial">Testimonial</Link>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">Contact Us</a>
+                                            <Link class="nav-link" to="/contacts">Contact Us</Link>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/login">Login</a>
+                                            <Link class="nav-link" to="/login">Login</Link>
                                         </li>
                                     </ul>
                                     <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
