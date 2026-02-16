@@ -18,7 +18,7 @@ export default function Header() {
     const loggedUser = (
         <>
             <li class="nav-item">
-                <Link class="nav-link" to="/login">Моят профил</Link>
+                <Link class="nav-link" to="/userProfile">Моят профил</Link>
             </li>
             <li class="nav-item">
                 <Link class="nav-link" to="/logout">Изход</Link>
