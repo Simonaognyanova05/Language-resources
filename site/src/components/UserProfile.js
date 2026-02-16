@@ -1,26 +1,30 @@
-export default function UserProfile() {
+import { useAuth } from "../contexts/AuthContext";
 
+export default function UserProfile() {
+    const {user} = useAuth();
     return (
         <section className="container my-5">
             <div className="row">
+
+                {/* LEFT SIDE – PROFILE INFO */}
                 <div className="col-lg-4 mb-4">
                     <div className="card shadow h-100">
                         <div className="card-body text-center">
-
-
-                            <h4 className="mb-1">Иван Иванов</h4>
-                            <p className="text-muted mb-2">ivan@email.com</p>
-
-                            <hr />
-
-                            <div className="text-start">
-                                <p><strong>Дата на регистрация:</strong> 12.01.2026</p>
-                                <p><strong>План:</strong> Premium</p>
+                            <div className="mb-3">
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkiquKWc0Q-azWDo6NyC2kqMYHDRweJ3Chg&s"
+                                    alt="Profile"
+                                    className="rounded-circle img-fluid"
+                                />
                             </div>
+
+                            <h4 className="mb-1">{user.email}</h4>
+
                         </div>
                     </div>
                 </div>
 
+                {/* RIGHT SIDE – PURCHASED FILES */}
                 <div className="col-lg-8">
                     <div className="card shadow">
                         <div className="card-body">
