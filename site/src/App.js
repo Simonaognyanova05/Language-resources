@@ -9,6 +9,7 @@ import Info from "./components/Info";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import ResetPassword from "./components/ResetPassword";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/info" element={<Info />} />
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/forgottenPass" element={<ResetPassword />} />
 
