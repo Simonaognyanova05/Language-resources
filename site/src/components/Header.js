@@ -1,6 +1,30 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Header() {
+    const { user } = useAuth();
+
+    const unLoggedUser = (
+        <>
+            <li class="nav-item">
+                <Link class="nav-link" to="/login">Влизане</Link>
+            </li>
+            <li class="nav-item">
+                <Link class="nav-link" to="/login">Регистрация</Link>
+            </li>
+        </>
+    );
+
+    const loggedUser = (
+        <>
+            <li class="nav-item">
+                <Link class="nav-link" to="/login">Моят профил</Link>
+            </li>
+            <li class="nav-item">
+                <Link class="nav-link" to="/logout">Изход</Link>
+            </li>
+        </>
+    );
     return (
         <>
             <div class="hero_area">
@@ -53,27 +77,19 @@ export default function Header() {
                                 <div class="d-flex  flex-column flex-lg-row align-items-center">
                                     <ul class="navbar-nav  ">
                                         <li class="nav-item active">
-                                            <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
+                                            <Link class="nav-link" to="/">Начало <span class="sr-only">(current)</span></Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link class="nav-link" to="/about">About </Link>
+                                            <Link class="nav-link" to="/about">За нас </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link class="nav-link" to="/products">Our Fruit </Link>
+                                            <Link class="nav-link" to="/products">Продукти </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link class="nav-link" to="/testimonial">Testimonial</Link>
+                                            <Link class="nav-link" to="/contacts">Контакти</Link>
                                         </li>
-                                        <li class="nav-item">
-                                            <Link class="nav-link" to="/contacts">Contact Us</Link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <Link class="nav-link" to="/login">Login</Link>
-                                        </li>
+                                        {user.email ? loggedUser : unLoggedUser}
                                     </ul>
-                                    <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                                    </form>
                                 </div>
                             </div>
                         </nav>

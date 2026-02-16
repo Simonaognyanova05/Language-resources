@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { login } from "../services/login";
 
@@ -57,9 +57,9 @@ export default function Login() {
 
                             {/* Forgot Password */}
                             <div className="text-end mb-3">
-                                <a href="/forgot-password" className="text-decoration-none">
+                                <Link to="/forgottenPass" className="text-decoration-none">
                                     Забравена парола?
-                                </a>
+                                </Link>
                             </div>
 
                             {/* Submit */}

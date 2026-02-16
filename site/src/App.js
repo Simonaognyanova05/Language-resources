@@ -5,9 +5,10 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Contacts from "./components/Contacts";
 import Products from "./components/Products";
-import Testimonial from "./components/Testimonial";
 import Info from "./components/Info";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   return (
@@ -19,8 +20,10 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/info" element={<Info />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/testimonial" element={<Testimonial />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/forgottenPass" element={<ResetPassword />} />
+
       </Routes>
       <Footer />
     </div>
