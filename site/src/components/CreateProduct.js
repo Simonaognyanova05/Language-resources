@@ -1,4 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import { createProduct } from "../services/createProduct";
+
 export default function CreateProduct() {
+    const navigate = useNavigate();
+
+    const createHandler = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const { title, description, price, img, productLink } = Object.fromEntries(formData);
+
+        try {
+            const result = await createProduct(title, description, price, img, productLink);
+
+            if (result.status == 200) {
+                navigate('/products');
+            } else {
+                alert("Възникна грешка, моля опитайте по-късно!");
+            }
+        } catch (error) {
+            alert("Възникна грешка, моля опитайте по-късно!");
+        }
+    }
     return (
         <section className="container my-5">
             <div className="row justify-content-center">
@@ -6,7 +29,7 @@ export default function CreateProduct() {
                     <div className="card shadow p-4">
                         <h3 className="text-center mb-4">Създаване на продукт</h3>
 
-                        <form>
+                        <form onSubmit={createHandler}>
                             <div className="form-group mb-3">
                                 <label>Заглавие</label>
                                 <input
@@ -22,7 +45,7 @@ export default function CreateProduct() {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    name="text"
+                                    name="description"
                                     required
                                 />
                             </div>
