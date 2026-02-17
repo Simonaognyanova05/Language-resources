@@ -11,6 +11,7 @@ import Logout from "./components/Logout";
 import ResetPassword from "./components/ResetPassword";
 import Register from "./components/Register";
 import UserProfile from "./components/UserProfile";
+import CreateProduct from "./components/CreateProduct";
 
 function App() {
   return (
@@ -27,8 +28,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/forgottenPass" element={<ResetPassword />} />
         <Route path="/userProfile" element={<UserProfile />} />
-
-
+        <Route path="/createProduct" element={<CreateProduct />} />
       </Routes>
       <Footer />
     </div>

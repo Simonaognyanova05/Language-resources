@@ -29,7 +29,7 @@ export default function Header() {
 
     const admin = (
         <li class="nav-item">
-            <Link class="nav-link" to="/contacts">Създай продукт</Link>
+            <Link class="nav-link" to="/createProduct">Създай продукт</Link>
         </li>
     );
     return (
