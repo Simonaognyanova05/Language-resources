@@ -8,7 +8,7 @@ export default function ProductItem({ product }) {
                 <h5>
                     {product.title}
                 </h5>
-                <Link to={`/product/${product.productLink}`}>
+                <Link to={`/product/${product.id}`}>
                     Buy Now
                 </Link>
             </div>

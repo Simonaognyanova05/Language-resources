@@ -1,33 +1,51 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../services/getProductById";
+
 export default function ProductDetails() {
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        getProductById(id)
+            .then(res => {
+                setProduct(res);
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }, [id]);
+
+    // ✅ IMPORTANT FIX
+    if (!product) {
+        return <div className="text-center my-5">Зареждане...</div>;
+    }
+
     return (
         <section className="container my-5">
             <div className="row align-items-center">
 
-                {/* LEFT SIDE – IMAGE */}
                 <div className="col-lg-6 mb-4">
                     <div className="text-center">
                         <img
-                            src="https://via.placeholder.com/500x400"
-                            alt="Product"
+                            src={product.img}
+                            alt={product.title}
                             className="img-fluid rounded shadow"
                         />
                     </div>
                 </div>
 
-                {/* RIGHT SIDE – INFO */}
                 <div className="col-lg-6">
                     <div className="card shadow p-4 border-0">
 
-                        <h2 className="mb-3">Premium Fruit Package</h2>
+                        <h2 className="mb-3">{product.title}</h2>
 
                         <p className="text-muted mb-4">
-                            Това е примерен детайлен опис на продукта. Тук можеш да
-                            добавиш повече информация – какво съдържа, как се използва,
-                            какви са предимствата и защо клиентът трябва да го закупи.
+                            {product.description}
                         </p>
 
                         <h3 className="mb-4 text-dark">
-                            45.00 лв
+                            {product.price}€
                         </h3>
 
                         <button className="btn btn-dark btn-lg w-100">
