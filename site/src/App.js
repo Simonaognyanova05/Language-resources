@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Contacts from "./components/Contacts";
-import Products from "./components/Products";
+import Products from "./components/Products/Products";
 import Info from "./components/Info";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
