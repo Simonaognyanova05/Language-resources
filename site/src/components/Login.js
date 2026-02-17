@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { login } from "../services/login";
 
+
 export default function Login() {
     const navigate = useNavigate();
     const { onLogin } = useAuth();

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { isAdmin } from "../services/isAdmin";
 
 export default function Header() {
     const { user } = useAuth();
@@ -24,6 +25,12 @@ export default function Header() {
                 <Link class="nav-link" to="/logout">Изход</Link>
             </li>
         </>
+    );
+
+    const admin = (
+        <li class="nav-item">
+            <Link class="nav-link" to="/contacts">Създай продукт</Link>
+        </li>
     );
     return (
         <>
@@ -89,6 +96,7 @@ export default function Header() {
                                             <Link class="nav-link" to="/contacts">Контакти</Link>
                                         </li>
                                         {user.email ? loggedUser : unLoggedUser}
+                                        {isAdmin(user.email) ? admin : ""}
                                     </ul>
                                 </div>
                             </div>

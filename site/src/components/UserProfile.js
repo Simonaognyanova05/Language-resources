@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function UserProfile() {
-    const {user} = useAuth();
+    const { user } = useAuth();
     return (
         <section className="container my-5">
             <div className="row">
@@ -68,9 +69,9 @@ export default function UserProfile() {
                                             <td>28.01.2026</td>
                                             <td>39.99 лв</td>
                                             <td>
-                                                <button className="btn btn-sm btn-dark">
+                                                <a href="https://www.youtube.com/watch?v=YTItQTp87D0&t=5104s" className="btn btn-sm btn-dark">
                                                     Изтегли
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
 
