@@ -12,6 +12,7 @@ import ResetPassword from "./components/ResetPassword";
 import Register from "./components/Register";
 import UserProfile from "./components/UserProfile";
 import CreateProduct from "./components/CreateProduct";
+import ProductDetails from "./components/ProductDetails";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/info" element={<Info />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />

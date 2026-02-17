@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ProductItem({ product }) {
     return (
         <div class="box">
@@ -6,9 +8,9 @@ export default function ProductItem({ product }) {
                 <h5>
                     {product.title}
                 </h5>
-                <a href={product.productLink}>
+                <Link to={`/product/${product.productLink}`}>
                     Buy Now
-                </a>
+                </Link>
             </div>
         </div>
     );

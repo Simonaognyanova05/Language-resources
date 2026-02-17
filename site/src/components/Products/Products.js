@@ -30,7 +30,7 @@ export default function Products() {
 
                 <div class="fruit_container">
                     {products.length > 0
-                        ? products.map(x => (<ProductItem product={x} />))
+                        ? products.map(x => (<ProductItem key={x.id} product={x} />))
                         : 'Няма създадени стаи'}
                 </div>
             </div>
