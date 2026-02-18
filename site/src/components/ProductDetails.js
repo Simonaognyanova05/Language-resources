@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useAuth } from '../contexts/AuthContext';
+import { isAdmin } from '../services/isAdmin';
 import { getProductById } from "../services/getProductById";
 
 export default function ProductDetails() {
     const { id } = useParams();
+    const { user } = useAuth();
     const [product, setProduct] = useState(null);
+
 
     useEffect(() => {
         getProductById(id)
@@ -20,6 +24,18 @@ export default function ProductDetails() {
     if (!product) {
         return <div className="text-center my-5">Зареждане...</div>;
     }
+
+    const loggedAdmin = (
+        <>
+            <Link to='/' className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }}>
+                Редактирай
+            </Link>
+
+            <Link to='/' className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }}>
+                Изтрий
+            </Link>
+        </>
+    );
 
     return (
         <section className="container my-5">
@@ -52,6 +68,7 @@ export default function ProductDetails() {
                             Добави в количката
                         </button>
 
+                        {isAdmin(user.email) ? loggedAdmin : ""}
                     </div>
                 </div>
 
