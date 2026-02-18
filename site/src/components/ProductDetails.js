@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { db } from "../config/firebase";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
 import { isAdmin } from '../services/isAdmin';
 import { getProductById } from "../services/getProductById";
 
 export default function ProductDetails() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const { user } = useAuth();
     const [product, setProduct] = useState(null);
@@ -31,11 +34,27 @@ export default function ProductDetails() {
                 Редактирай
             </Link>
 
-            <Link to='/' className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }}>
+            <button className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }} onClick={() => handleDelete(id)}>
                 Изтрий
-            </Link>
+            </button>
         </>
     );
+
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm(
+            "Сигурни ли сте, че искате да изтриете този продукт?"
+        );
+
+        if (!confirmDelete) return;
+
+        try {
+            await deleteDoc(doc(db, "products", id));
+            navigate("/products");
+        } catch (error) {
+            console.error("Delete error:", error);
+            alert("Възникна грешка!");
+        }
+    };
 
     return (
         <section className="container my-5">
