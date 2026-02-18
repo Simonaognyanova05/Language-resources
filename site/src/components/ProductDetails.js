@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useAuth } from '../contexts/AuthContext';
-import { isAdmin } from '../services/isAdmin';
+import { useAuth } from "../contexts/AuthContext";
+import { isAdmin } from "../services/isAdmin";
 import { getProductById } from "../services/getProductById";
 
 export default function ProductDetails() {
@@ -12,33 +12,15 @@ export default function ProductDetails() {
     const { user } = useAuth();
     const [product, setProduct] = useState(null);
 
-
     useEffect(() => {
         getProductById(id)
-            .then(res => {
-                setProduct(res);
-            })
-            .catch(e => {
-                console.log(e);
-            })
+            .then(res => setProduct(res))
+            .catch(e => console.log(e));
     }, [id]);
 
-    // ✅ IMPORTANT FIX
     if (!product) {
         return <div className="text-center my-5">Зареждане...</div>;
     }
-
-    const loggedAdmin = (
-        <>
-            <Link to={`/editProduct/${id}`} className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }}>
-                Редактирай
-            </Link>
-
-            <button className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }} onClick={() => handleDelete(id)}>
-                Изтрий
-            </button>
-        </>
-    );
 
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm(
@@ -55,6 +37,60 @@ export default function ProductDetails() {
             alert("Възникна грешка!");
         }
     };
+
+    // 🔥 ADD TO CART (Firestore)
+    const handleAddToCart = async () => {
+        if (!user) {
+            alert("Трябва да сте логнати!");
+            return;
+        }
+
+        try {
+            const cartRef = doc(db, "users", user.uid, "cart", product.id);
+            const existing = await getDoc(cartRef);
+
+            if (existing.exists()) {
+                const currentQty = existing.data().quantity;
+
+                await setDoc(cartRef, {
+                    ...product,
+                    quantity: currentQty + 1,
+                    addedAt: new Date()
+                });
+            } else {
+                await setDoc(cartRef, {
+                    ...product,
+                    quantity: 1,
+                    addedAt: new Date()
+                });
+            }
+
+            alert("Продуктът е добавен в количката!");
+        } catch (error) {
+            console.error("Cart error:", error);
+            alert("Грешка при добавяне в количката!");
+        }
+    };
+
+    const loggedAdmin = (
+        <>
+            <Link
+                to={`/editProduct/${id}`}
+                className="btn btn-dark btn-lg w-100"
+                style={{ marginTop: "10px" }}
+            >
+                Редактирай
+            </Link>
+
+            <button
+                className="btn btn-dark btn-lg w-100"
+                style={{ marginTop: "10px" }}
+                onClick={() => handleDelete(id)}
+            >
+                Изтрий
+            </button>
+        </>
+    );
 
     return (
         <section className="container my-5">
@@ -83,11 +119,14 @@ export default function ProductDetails() {
                             {product.price}€
                         </h3>
 
-                        <button className="btn btn-dark btn-lg w-100">
+                        <button
+                            className="btn btn-dark btn-lg w-100"
+                            onClick={handleAddToCart}
+                        >
                             Добави в количката
                         </button>
 
-                        {isAdmin(user.email) ? loggedAdmin : ""}
+                        {user && isAdmin(user.email) ? loggedAdmin : ""}
                     </div>
                 </div>
 
