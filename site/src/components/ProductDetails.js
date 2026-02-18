@@ -27,7 +27,7 @@ export default function ProductDetails() {
 
     const loggedAdmin = (
         <>
-            <Link to='/' className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }}>
+            <Link to={`/editProduct/${id}`} className="btn btn-dark btn-lg w-100" style={{ marginTop: "10px" }}>
                 Редактирай
             </Link>
 
