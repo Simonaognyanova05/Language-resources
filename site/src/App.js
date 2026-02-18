@@ -14,6 +14,7 @@ import UserProfile from "./components/UserProfile";
 import CreateProduct from "./components/CreateProduct";
 import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/forgottenPass" element={<ResetPassword />} />
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/createProduct" element={<CreateProduct />} />
