@@ -1,6 +1,8 @@
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import './Header.css';
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { isAdmin } from "../services/isAdmin";
+import { useAuth } from "../../contexts/AuthContext";
+import { isAdmin } from "../../services/isAdmin";
 
 export default function Header() {
     const { user } = useAuth();
@@ -24,6 +26,13 @@ export default function Header() {
             <li class="nav-item">
                 <Link class="nav-link" to="/logout">Изход</Link>
             </li>
+            <li className="nav-item">
+                <Link to="/cart" className="nav-link cart-link">
+                    <i className="bi bi-cart3"></i>
+                </Link>
+            </li>
+
+
         </>
     );
 
