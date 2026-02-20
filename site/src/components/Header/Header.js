@@ -7,6 +7,17 @@ import { isAdmin } from "../../services/isAdmin";
 export default function Header() {
     const { user } = useAuth();
 
+    const userHead = (
+        <>
+            <li class="nav-item">
+                <Link class="nav-link" to="/about">За нас </Link>
+            </li>
+
+            <li class="nav-item">
+                <Link class="nav-link" to="/contacts">Контакти</Link>
+            </li>
+        </>
+    );
     const unLoggedUser = (
         <>
             <li class="nav-item">
@@ -37,9 +48,14 @@ export default function Header() {
     );
 
     const admin = (
-        <li class="nav-item">
-            <Link class="nav-link" to="/createProduct">Създай продукт</Link>
-        </li>
+        <>
+            <li class="nav-item">
+                <Link class="nav-link" to="/createProduct">Създай продукт</Link>
+            </li>
+            <li class="nav-item">
+                <Link class="nav-link" to="/orders">Поръчки</Link>
+            </li>
+        </>
     );
     return (
         <>
@@ -96,16 +112,11 @@ export default function Header() {
                                             <Link class="nav-link" to="/">Начало <span class="sr-only">(current)</span></Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link class="nav-link" to="/about">За нас </Link>
-                                        </li>
-                                        <li class="nav-item">
                                             <Link class="nav-link" to="/products">Продукти </Link>
                                         </li>
-                                        <li class="nav-item">
-                                            <Link class="nav-link" to="/contacts">Контакти</Link>
-                                        </li>
+
+                                        {isAdmin(user.email) ? admin : userHead}
                                         {user.email ? loggedUser : unLoggedUser}
-                                        {isAdmin(user.email) ? admin : ""}
                                     </ul>
                                 </div>
                             </div>

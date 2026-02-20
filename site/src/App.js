@@ -16,6 +16,7 @@ import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
+import AdminOrders from "./components/AdminOrders";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<AdminOrders />} />
 
       </Routes>
       <Footer />
