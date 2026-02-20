@@ -89,7 +89,7 @@ export default function AdminOrders() {
                                     : order.status === "paid"
                                         ? "success"
                                         : "primary"
-                                }`}>
+                                }`} style={{height: "20px"}}>
                                 {order.status}
                             </span>
                         </div>
