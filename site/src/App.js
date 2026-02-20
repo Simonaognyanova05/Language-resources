@@ -15,6 +15,7 @@ import CreateProduct from "./components/CreateProduct";
 import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
 import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
         <Route path="/forgottenPass" element={<ResetPassword />} />
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/createProduct" element={<CreateProduct />} />
+        <Route path="/checkout" element={<Checkout />} />
+
       </Routes>
       <Footer />
     </div>

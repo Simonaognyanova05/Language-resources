@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { collection, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Cart() {
+    const navigate = useNavigate();
     const { user } = useAuth();
     const [cartItems, setCartItems] = useState([]);
 
@@ -144,9 +146,13 @@ export default function Cart() {
                             <h4>{totalPrice.toFixed(2)}€</h4>
                         </div>
 
-                        <button className="btn btn-dark btn-lg w-100 mt-3">
+                        <button
+                            className="btn btn-dark btn-lg w-100 mt-3"
+                            onClick={() => navigate("/checkout")}
+                        >
                             Поръчай
                         </button>
+
                     </div>
                 </>
             )}
