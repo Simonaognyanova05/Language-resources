@@ -1,88 +1,106 @@
+import { useState } from "react";
+
 export default function Testimonial() {
+    const [formData, setFormData] = useState({
+        name: "",
+        comment: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!formData.name || !formData.comment) {
+            alert("Попълнете всички полета.");
+            return;
+        }
+
+        alert("Благодарим за коментара!");
+        setFormData({ name: "", comment: "" });
+    };
+
     return (
-        <section class="client_section layout_padding-bottom">
-            <div class="container ">
-                <div class="heading_container">
-                    <h2>
-                        What Syas Cutomer
-                    </h2>
-                    <hr />
-                </div>
-                <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="client_container layout_padding-top">
-                                <div class="img-box">
-                                    <img src="images/client-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Jone Mark
-                                    </h5>
-                                    <p>
-                                        <img src="images/left-quote.png" alt="" />
-                                        <span>
-                                            Lorem ipsum dolor sit amet,
-                                        </span>
-                                        <img src="images/right-quote.png" alt="" /> <br />
-                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="client_container layout_padding-top">
-                                <div class="img-box">
-                                    <img src="images/client-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Jone Mark
-                                    </h5>
-                                    <p>
-                                        <img src="images/left-quote.png" alt="" />
-                                        <span>
-                                            Lorem ipsum dolor sit amet,
-                                        </span>
-                                        <img src="images/right-quote.png" alt="" /> <br />
-                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="client_container layout_padding-top">
-                                <div class="img-box">
-                                    <img src="images/client-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Jone Mark
-                                    </h5>
-                                    <p>
-                                        <img src="images/left-quote.png" alt="" />
-                                        <span>
-                                            Lorem ipsum dolor sit amet,
-                                        </span>
-                                        <img src="images/right-quote.png" alt="" /> <br />
-                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    </p>
-                                </div>
-                            </div>
+        <section className="py-5">
+            <div className="container">
+
+                <h2 className="text-center mb-5">
+                    Какво казват нашите клиенти
+                </h2>
+
+                {/* Testimonials Grid */}
+                <div className="row mb-5">
+
+                    <div className="col-md-6 mb-4">
+                        <div className="card border-0 shadow p-4 h-100">
+                            <h5>Anna Petrova</h5>
+                            <p className="text-muted">
+                                Страхотно обслужване и отлично структурирани материали!
+                            </p>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
-                        <span class="sr-only">Next</span>
-                    </a>
+
+                    <div className="col-md-6 mb-4">
+                        <div className="card border-0 shadow p-4 h-100">
+                            <h5>Ivan Georgiev</h5>
+                            <p className="text-muted">
+                                Удобен формат на обучение и ясни инструкции.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                {/* Comment Form */}
+                <div className="card border-0 shadow-lg p-5">
+                    <h4 className="mb-4 text-center">
+                        Оставете вашето мнение
+                    </h4>
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="row">
+
+                            <div className="col-md-6 mb-3">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    className="form-control form-control-lg"
+                                    placeholder="Вашето име"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div className="col-md-12 mb-3">
+                                <textarea
+                                    name="comment"
+                                    rows="4"
+                                    className="form-control form-control-lg"
+                                    placeholder="Вашият коментар..."
+                                    value={formData.comment}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="btn btn-lg w-100"
+                            style={{
+                                background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                color: "white",
+                                fontWeight: "600"
+                            }}
+                        >
+                            Изпрати коментар
+                        </button>
+                    </form>
                 </div>
 
             </div>
