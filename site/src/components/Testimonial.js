@@ -1,28 +1,30 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { writeComment } from "../services/writeComment";
+
 
 export default function Testimonial() {
-    const [formData, setFormData] = useState({
-        name: "",
-        comment: ""
-    });
+    const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.name || !formData.comment) {
-            alert("Попълнете всички полета.");
-            return;
-        }
+        const formData = new FormData(e.currentTarget);
+        const {name, comment} = Object.fromEntries(formData);
 
-        alert("Благодарим за коментара!");
-        setFormData({ name: "", comment: "" });
+        try {
+            const result = await writeComment({name, comment});
+
+            if (result.status == 200) {
+                alert("Коментарът е създаден успешно!");
+                navigate('/');
+                e.target.reset();
+            } else {
+                alert("Възникна грешка, моля, опитайте по-късно!");
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -71,8 +73,6 @@ export default function Testimonial() {
                                     name="name"
                                     className="form-control form-control-lg"
                                     placeholder="Вашето име"
-                                    value={formData.name}
-                                    onChange={handleChange}
                                 />
                             </div>
 
@@ -82,8 +82,6 @@ export default function Testimonial() {
                                     rows="4"
                                     className="form-control form-control-lg"
                                     placeholder="Вашият коментар..."
-                                    value={formData.comment}
-                                    onChange={handleChange}
                                 />
                             </div>
 
