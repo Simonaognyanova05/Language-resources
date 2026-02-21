@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { writeComment } from "../services/writeComment";
+import { writeComment } from "../../services/writeComment";
+import { getComments } from "../../services/getComments";
+import CommentItem from "./CommentItem";
 
 
 export default function Testimonial() {
     const navigate = useNavigate();
+    const [comment, setComment] = useState([]);
+
+    useEffect(() => {
+        getComments()
+            .then(res => {
+                setComment(res);
+            }).catch(e => {
+                console.log(e);
+            })
+    }, [comment])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const {name, comment} = Object.fromEntries(formData);
+        const { name, comment } = Object.fromEntries(formData);
 
         try {
-            const result = await writeComment({name, comment});
+            const result = await writeComment({ name, comment });
 
             if (result.status == 200) {
                 alert("Коментарът е създаден успешно!");
@@ -38,23 +50,7 @@ export default function Testimonial() {
                 {/* Testimonials Grid */}
                 <div className="row mb-5">
 
-                    <div className="col-md-6 mb-4">
-                        <div className="card border-0 shadow p-4 h-100">
-                            <h5>Anna Petrova</h5>
-                            <p className="text-muted">
-                                Страхотно обслужване и отлично структурирани материали!
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                        <div className="card border-0 shadow p-4 h-100">
-                            <h5>Ivan Georgiev</h5>
-                            <p className="text-muted">
-                                Удобен формат на обучение и ясни инструкции.
-                            </p>
-                        </div>
-                    </div>
+                    {comment.map(x => <CommentItem key={x.id} comment={x}/>)}
 
                 </div>
 

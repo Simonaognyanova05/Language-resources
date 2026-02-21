@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Testimonial from "./Testimonial";
+import Testimonial from "./Testimonial/Testimonial";
 
 export default function Home() {
     return (
