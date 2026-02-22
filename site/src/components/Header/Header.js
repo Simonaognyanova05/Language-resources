@@ -63,7 +63,7 @@ export default function Header() {
                 <div class="brand_box">
                     <a class="navbar-brand" href="index.html">
                         <span>
-                            Учебен център Варна
+                            Учебен център
                         </span>
                     </a>
                 </div>
