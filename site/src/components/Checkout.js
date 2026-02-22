@@ -93,92 +93,145 @@ export default function Checkout() {
     };
 
     return (
-        <section className="container my-5">
-            <h2 className="text-center mb-4">Завършване на поръчката</h2>
+        <section className="py-5" style={{ background: "#f8f9fa" }}>
+            <div className="container">
+                <h2 className="text-center fw-bold mb-5">
+                    Завършване на поръчката
+                </h2>
 
-            <div className="row">
+                <div className="row g-5">
 
-                {/* FORM */}
-                <div className="col-lg-7 mb-4">
-                    <div className="card shadow border-0 p-4">
-                        <form onSubmit={handleSubmit}>
+                    {/* FORM */}
+                    <div className="col-lg-7">
+                        <div className="bg-white p-5 rounded-4 shadow-sm">
 
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <input
-                                        type="text"
-                                        name="firstName"
-                                        placeholder="Име"
-                                        className="form-control"
-                                        required
-                                        onChange={handleChange}
-                                    />
+                            <h5 className="fw-semibold mb-4">
+                                Данни за клиента
+                            </h5>
+
+                            <form onSubmit={handleSubmit}>
+
+                                <div className="row">
+                                    <div className="col-md-6 mb-3">
+                                        <input
+                                            type="text"
+                                            name="firstName"
+                                            placeholder="Име"
+                                            className="form-control rounded-pill p-3"
+                                            required
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <input
+                                            type="text"
+                                            name="lastName"
+                                            placeholder="Фамилия"
+                                            className="form-control rounded-pill p-3"
+                                            required
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="col-md-6 mb-3">
-                                    <input
-                                        type="text"
-                                        name="lastName"
-                                        placeholder="Фамилия"
-                                        className="form-control"
-                                        required
-                                        onChange={handleChange}
-                                    />
-                                </div>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Имейл"
+                                    className="form-control rounded-pill p-3 mb-3"
+                                    required
+                                    onChange={handleChange}
+                                />
+
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    placeholder="Телефон"
+                                    className="form-control rounded-pill p-3 mb-3"
+                                    required
+                                    onChange={handleChange}
+                                />
+
+                                <textarea
+                                    name="notes"
+                                    placeholder="Бележки към поръчката"
+                                    className="form-control rounded-4 p-3 mb-4"
+                                    rows="3"
+                                    onChange={handleChange}
+                                ></textarea>
+
+                                <button
+                                    className="btn w-100 py-3"
+                                    disabled={loading}
+                                    style={{
+                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                        color: "white",
+                                        border: "none",
+                                        borderRadius: "50px",
+                                        fontWeight: "600",
+                                        transition: "0.3s"
+                                    }}
+                                    onMouseOver={(e) => e.target.style.opacity = "0.9"}
+                                    onMouseOut={(e) => e.target.style.opacity = "1"}
+                                >
+                                    {loading ? "Обработва се..." : "Заяви поръчката"}
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    {/* SUMMARY */}
+                    <div className="col-lg-5">
+
+                        {/* TOTAL CARD */}
+                        <div className="bg-white p-5 rounded-4 shadow-sm mb-4"
+                            style={{ top: "100px" }}>
+
+                            <h5 className="fw-semibold mb-4">
+                                Обобщение
+                            </h5>
+
+                            <div className="d-flex justify-content-between mb-3">
+                                <span>Междинна сума:</span>
+                                <span>{totalPrice.toFixed(2)} €</span>
                             </div>
 
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Имейл"
-                                className="form-control mb-3"
-                                required
-                                onChange={handleChange}
-                            />
+                            <hr />
 
-                            <input
-                                type="text"
-                                name="phone"
-                                placeholder="Телефон"
-                                className="form-control mb-3"
-                                required
-                                onChange={handleChange}
-                            />
+                            <div className="d-flex justify-content-between align-items-center mt-3">
+                                <h5 className="fw-bold m-0">Общо:</h5>
+                                <h4
+                                    className="fw-bold m-0"
+                                    style={{
+                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                        WebkitBackgroundClip: "text",
+                                        WebkitTextFillColor: "transparent"
+                                    }}
+                                >
+                                    {totalPrice.toFixed(2)} €
+                                </h4>
+                            </div>
+                        </div>
 
-                            <textarea
-                                name="notes"
-                                placeholder="Бележки"
-                                className="form-control mb-3"
-                                rows="3"
-                                onChange={handleChange}
-                            ></textarea>
+                        {/* BANK INFO */}
+                        <div className="bg-white p-5 rounded-4 shadow-sm">
+                            <h6 className="fw-semibold mb-3">
+                                Информация за плащане
+                            </h6>
 
-                            <button
-                                className="btn btn-dark btn-lg w-100"
-                                disabled={loading}
-                            >
-                                {loading ? "Обработва се..." : "Заяви поръчката"}
-                            </button>
-                        </form>
+                            <div className="small text-muted" style={{ lineHeight: "1.8" }}>
+                                <p><strong>Банка:</strong> Example Bank</p>
+                                <p><strong>IBAN:</strong> BG00 XXXX 0000 0000 0000</p>
+                                <p><strong>BIC:</strong> XXXXXXXX</p>
+                                <p><strong>Основание:</strong> Номер на поръчка</p>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-
-                {/* SUMMARY */}
-                <div className="col-lg-5">
-                    <div className="card shadow border-0 p-4 mb-4">
-                        <h5>Общо</h5>
-                        <h3>{totalPrice.toFixed(2)}€</h3>
-                    </div>
-
-                    <div className="card shadow border-0 p-4 bg-light">
-                        <h5>Банкова информация</h5>
-                        <p><strong>Банка:</strong> Example Bank</p>
-                        <p><strong>IBAN:</strong> BG00 XXXX 0000 0000 0000</p>
-                        <p><strong>BIC:</strong> XXXXXXXX</p>
-                        <p><strong>Основание:</strong> Номер на поръчка</p>
-                    </div>
-                </div>
-
             </div>
         </section>
     );

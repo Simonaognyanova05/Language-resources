@@ -67,95 +67,130 @@ export default function Cart() {
     );
 
     return (
-        <section className="container my-5">
-            <h2 className="mb-4 text-center">🛒 Моята количка</h2>
+        <section className="py-5" style={{ background: "#f8f9fa" }}>
+            <div className="container">
 
-            {cartItems.length === 0 ? (
-                <div className="text-center text-muted">
-                    Количката е празна.
-                </div>
-            ) : (
-                <>
-                    <div className="row">
-                        {cartItems.map((item) => (
-                            <div key={item.id} className="col-12 mb-4">
-                                <div className="card shadow-sm border-0 p-3">
-                                    <div className="row align-items-center">
+                <h2 className="text-center fw-bold mb-5">
+                    🛒 Моята количка
+                </h2>
 
-                                        {/* Image */}
-                                        <div className="col-4 col-md-2 text-center">
-                                            <img
-                                                src={item.img}
-                                                alt={item.title}
-                                                className="img-fluid rounded"
-                                                style={{ maxHeight: "80px" }}
-                                            />
-                                        </div>
+                {cartItems.length === 0 ? (
+                    <div className="text-center text-muted fs-5">
+                        Количката е празна.
+                    </div>
+                ) : (
+                    <>
+                        <div className="row g-4">
 
-                                        {/* Info */}
-                                        <div className="col-8 col-md-4">
-                                            <h6 className="mb-1">{item.title}</h6>
-                                            <small className="text-muted">
-                                                {item.price}€
-                                            </small>
-                                        </div>
+                            {cartItems.map((item) => (
+                                <div key={item.id} className="col-12">
+                                    <div className="bg-white p-4 rounded-4 shadow-sm">
 
-                                        {/* Quantity */}
-                                        <div className="col-6 col-md-3 mt-3 mt-md-0">
-                                            <div className="d-flex align-items-center justify-content-start justify-content-md-center">
+                                        <div className="row align-items-center">
+
+                                            {/* Image */}
+                                            <div className="col-md-2 text-center mb-3 mb-md-0">
+                                                <img
+                                                    src={item.img}
+                                                    alt={item.title}
+                                                    className="img-fluid rounded-3"
+                                                    style={{ maxHeight: "90px", objectFit: "cover" }}
+                                                />
+                                            </div>
+
+                                            {/* Title & Price */}
+                                            <div className="col-md-4">
+                                                <h6 className="fw-semibold mb-1">
+                                                    {item.title}
+                                                </h6>
+                                                <small className="text-muted">
+                                                    {item.price} €
+                                                </small>
+                                            </div>
+
+                                            {/* Quantity Controls */}
+                                            <div className="col-md-3 mt-3 mt-md-0">
+                                                <div className="d-flex align-items-center justify-content-md-center">
+
+                                                    <button
+                                                        className="btn btn-outline-dark rounded-circle"
+                                                        style={{ width: "35px", height: "35px" }}
+                                                        onClick={() => decreaseQty(item)}
+                                                    >
+                                                        −
+                                                    </button>
+
+                                                    <span className="mx-3 fw-bold">
+                                                        {item.quantity}
+                                                    </span>
+
+                                                    <button
+                                                        className="btn btn-outline-dark rounded-circle"
+                                                        style={{ width: "35px", height: "35px" }}
+                                                        onClick={() => increaseQty(item)}
+                                                    >
+                                                        +
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+                                            {/* Remove */}
+                                            <div className="col-md-3 text-md-end mt-3 mt-md-0">
                                                 <button
-                                                    className="btn btn-outline-dark btn-sm"
-                                                    onClick={() => decreaseQty(item)}
+                                                    className="btn btn-outline-danger rounded-pill px-4"
+                                                    onClick={() => removeItem(item.id)}
                                                 >
-                                                    -
-                                                </button>
-
-                                                <span className="mx-3">
-                                                    {item.quantity}
-                                                </span>
-
-                                                <button
-                                                    className="btn btn-outline-dark btn-sm"
-                                                    onClick={() => increaseQty(item)}
-                                                >
-                                                    +
+                                                    Премахни
                                                 </button>
                                             </div>
-                                        </div>
 
-                                        {/* Remove */}
-                                        <div className="col-6 col-md-3 text-end mt-3 mt-md-0">
-                                            <button
-                                                className="btn btn-danger btn-sm"
-                                                onClick={() => removeItem(item.id)}
-                                            >
-                                                Премахни
-                                            </button>
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
 
-                    {/* Total Section */}
-                    <div className="card shadow border-0 p-4 mt-4">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <h4>Общо:</h4>
-                            <h4>{totalPrice.toFixed(2)}€</h4>
                         </div>
 
-                        <button
-                            className="btn btn-dark btn-lg w-100 mt-3"
-                            onClick={() => navigate("/checkout")}
-                        >
-                            Поръчай
-                        </button>
+                        {/* TOTAL CARD */}
+                        <div className="bg-white p-5 rounded-4 shadow-sm mt-5">
 
-                    </div>
-                </>
-            )}
+                            <div className="d-flex justify-content-between align-items-center mb-4">
+                                <h4 className="fw-bold m-0">Общо:</h4>
+
+                                <h4
+                                    className="fw-bold m-0"
+                                    style={{
+                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                        WebkitBackgroundClip: "text",
+                                        WebkitTextFillColor: "transparent"
+                                    }}
+                                >
+                                    {totalPrice.toFixed(2)} €
+                                </h4>
+                            </div>
+
+                            <button
+                                className="btn w-100 py-3"
+                                onClick={() => navigate("/checkout")}
+                                style={{
+                                    background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "50px",
+                                    fontWeight: "600",
+                                    transition: "0.3s"
+                                }}
+                                onMouseOver={(e) => e.target.style.opacity = "0.9"}
+                                onMouseOut={(e) => e.target.style.opacity = "1"}
+                            >
+                                Поръчай
+                            </button>
+
+                        </div>
+                    </>
+                )}
+            </div>
         </section>
     );
 }

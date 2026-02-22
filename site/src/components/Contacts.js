@@ -1,53 +1,89 @@
 export default function Contacts() {
     return (
-        <section class="contact_section layout_padding-bottom">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="offset-lg-2 col-md-10 offset-md-1">
-                        <div class="heading_container">
-                            <hr />
-                            <h2>
-                                Request A call back
-                            </h2>
-                        </div>
-                    </div>
+        <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
+            <div className="container">
+
+                {/* Heading */}
+                <div className="text-center mb-5">
+                    <h2 className="fw-bold display-6">
+                        Свържете се с нас
+                    </h2>
+                    <p className="text-muted">
+                        Изпратете запитване и ще се свържем с вас възможно най-скоро
+                    </p>
                 </div>
 
-                <div class="layout_padding2-top">
-                    <div class="row">
-                        <div class="col-lg-4 offset-lg-2 col-md-5 offset-md-1">
-                            <form action="">
-                                <div class="contact_form-container">
-                                    <div>
-                                        <div>
-                                            <input type="text" placeholder="Full Name" />
-                                        </div>
-                                        <div>
-                                            <input type="email" placeholder="Email" />
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Phone Number" />
-                                        </div>
-                                        <div>
-                                            <input type="text" class="message_input" placeholder="Message" />
-                                        </div>
-                                        <div>
-                                            <button type="submit">
-                                                Send
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-6 px-0">
-                            <div class="map_container">
-                                <div class="map-responsive">
-                                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="300" frameborder="0" style={{ border: "0", width: "100%", height: "100%" }} allowfullscreen></iframe>
-                                </div>
+                <div className="row shadow-lg rounded-4 overflow-hidden bg-white">
+
+                    {/* Contact Form */}
+                    <div className="col-lg-6 p-5">
+
+                        <form>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    className="form-control rounded-pill p-3"
+                                    placeholder="Вашето име"
+                                />
                             </div>
-                        </div>
+
+                            <div className="mb-3">
+                                <input
+                                    type="email"
+                                    className="form-control rounded-pill p-3"
+                                    placeholder="Имейл адрес"
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    className="form-control rounded-pill p-3"
+                                    placeholder="Телефон"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <textarea
+                                    className="form-control rounded-4 p-3"
+                                    rows="4"
+                                    placeholder="Вашето съобщение"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="btn w-100 py-3"
+                                style={{
+                                    background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "50px",
+                                    fontWeight: "600",
+                                    transition: "0.3s"
+                                }}
+                            >
+                                Изпрати съобщение
+                            </button>
+                        </form>
                     </div>
+
+                    {/* Google Map */}
+                    <div className="col-lg-6 p-0">
+                        <iframe
+                            title="map"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Varna+Bulgaria"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                minHeight: "500px",
+                                border: 0
+                            }}
+                            allowFullScreen
+                            loading="lazy"
+                        />
+                    </div>
+
                 </div>
             </div>
         </section>

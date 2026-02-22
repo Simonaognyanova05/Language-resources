@@ -64,7 +64,24 @@ export default function Login() {
                             </div>
 
                             {/* Submit */}
-                            <button type="submit" className="btn btn-dark w-100">
+                            <button
+                                type="submit"
+                                className="btn w-100 py-3"
+                                style={{
+                                    background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "50px",
+                                    fontWeight: "600",
+                                    transition: "0.3s",
+                                }}
+                                onMouseOver={(e) =>
+                                    (e.target.style.opacity = "0.9")
+                                }
+                                onMouseOut={(e) =>
+                                    (e.target.style.opacity = "1")
+                                }
+                            >
                                 Вход
                             </button>
                         </form>

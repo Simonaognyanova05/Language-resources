@@ -93,43 +93,90 @@ export default function ProductDetails() {
     );
 
     return (
-        <section className="container my-5">
-            <div className="row align-items-center">
+        <section className="py-5" style={{ background: "#f8f9fa" }}>
+            <div className="container">
+                <div className="row align-items-center g-5">
 
-                <div className="col-lg-6 mb-4">
-                    <div className="text-center">
-                        <img
-                            src={product.img}
-                            alt={product.title}
-                            className="img-fluid rounded shadow"
-                        />
+                    {/* Image */}
+                    <div className="col-lg-6">
+                        <div className="bg-white p-4 rounded-4 shadow-sm text-center">
+                            <img
+                                src={product.img}
+                                alt={product.title}
+                                className="img-fluid rounded-4"
+                                style={{ maxHeight: "450px", objectFit: "cover" }}
+                            />
+                        </div>
                     </div>
-                </div>
 
-                <div className="col-lg-6">
-                    <div className="card shadow p-4 border-0">
+                    {/* Details */}
+                    <div className="col-lg-6">
+                        <div className="bg-white p-5 rounded-4 shadow-sm">
 
-                        <h2 className="mb-3">{product.title}</h2>
+                            <h2 className="fw-bold mb-3">
+                                {product.title}
+                            </h2>
 
-                        <p className="text-muted mb-4">
-                            {product.description}
-                        </p>
+                            <p className="text-muted mb-4" style={{ lineHeight: "1.8" }}>
+                                {product.description}
+                            </p>
 
-                        <h3 className="mb-4 text-dark">
-                            {product.price}€
-                        </h3>
+                            <div className="d-flex align-items-center justify-content-between mb-4">
+                                <h3
+                                    className="fw-bold m-0"
+                                    style={{
+                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                        WebkitBackgroundClip: "text",
+                                        WebkitTextFillColor: "transparent"
+                                    }}
+                                >
+                                    {product.price} €
+                                </h3>
+                            </div>
 
-                        <button
-                            className="btn btn-dark btn-lg w-100"
-                            onClick={handleAddToCart}
-                        >
-                            Добави в количката
-                        </button>
+                            {/* Add to Cart */}
+                            <button
+                                className="btn w-100 py-3 mb-3"
+                                onClick={handleAddToCart}
+                                style={{
+                                    background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "50px",
+                                    fontWeight: "600",
+                                    transition: "0.3s"
+                                }}
+                                onMouseOver={(e) => e.target.style.opacity = "0.9"}
+                                onMouseOut={(e) => e.target.style.opacity = "1"}
+                            >
+                                Добави в количката
+                            </button>
 
-                        {user && isAdmin(user.email) ? loggedAdmin : ""}
+                            {/* Admin Controls */}
+                            {user && isAdmin(user.email) && (
+                                <div className="d-grid gap-3">
+
+                                    <Link
+                                        to={`/editProduct/${id}`}
+                                        className="btn btn-outline-dark py-2 rounded-pill"
+                                    >
+                                        Редактирай
+                                    </Link>
+
+                                    <button
+                                        className="btn btn-outline-danger py-2 rounded-pill"
+                                        onClick={() => handleDelete(id)}
+                                    >
+                                        Изтрий
+                                    </button>
+
+                                </div>
+                            )}
+
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
     );
