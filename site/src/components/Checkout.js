@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { collection, getDocs, addDoc, serverTimestamp, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuth } from "../contexts/AuthContext";
@@ -63,7 +64,6 @@ export default function Checkout() {
 
             const orderNumber = Date.now();
 
-            // 1️⃣ Запис на поръчка
             await addDoc(collection(db, "orders"), {
                 userId: user.uid,
                 orderNumber,
@@ -74,7 +74,22 @@ export default function Checkout() {
                 createdAt: serverTimestamp()
             });
 
-            // 2️⃣ Изчистване на количката
+            // 📧 Email Notification
+            await emailjs.send(
+                "service_ce5rn9m",
+                "template_lo5z0wo",
+                {
+                    orderNumber,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    total: totalPrice.toFixed(2),
+                    to_email: "pointsmart909@gmail.com"
+                },
+                "NL354V9ZykEYwGYmA"
+            );
+            // Clear cart
             const deletePromises = cartItems.map((item) =>
                 deleteDoc(doc(db, "users", user.uid, "cart", item.id))
             );
