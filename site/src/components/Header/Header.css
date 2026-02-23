@@ -1,41 +1,61 @@
+.custom_nav-container {
+    background-color: #b9b1cc;
+}
+
+.navbar-nav .nav-link {
+    color: black;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    opacity: 0.7;
+}
+
 .cart-link {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* desktop центрира */
 }
 
-/* Badge */
-.cart-badge {
-    position: absolute;
-    top: 5px;
-    right: 35%;
-    background: #ff3b3b;
-    color: white;
-    font-size: 11px;
-    padding: 3px 6px;
-    border-radius: 50%;
-    font-weight: bold;
-}
-
-/* MOBILE FIX */
+/* MOBILE */
 @media (max-width: 991px) {
 
     .navbar-nav {
         width: 100%;
+        text-align: center;
     }
 
     .navbar-nav .nav-item {
         width: 100%;
-        text-align: center;
+        padding: 8px 0;
     }
 
-    .cart-link {
-        justify-content: center;
-    }
+}
 
-    .cart-badge {
-        right: 30%;
-    }
+/* красив hamburger */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* запази стария шрифт */
+.navbar,
+.navbar-nav .nav-link,
+.navbar-brand {
+    font-family: inherit !important;
+    margin-right: 15px;
+}
+
+/* запази старите цветове */
+.navbar-nav .nav-link {
+    color: black !important;
+
+}
+
+/* hover цвят ако имаш */
+.navbar-nav .nav-link:hover {
+    color: #B21F7A !important;
 }
