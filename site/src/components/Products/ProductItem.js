@@ -15,7 +15,11 @@ export default function ProductItem({ product }) {
                     src={product.img}
                     alt={product.title}
                     className="card-img-top"
-                    style={{ height: "220px", objectFit: "cover" }}
+                    style={{
+                        height: "220px",
+                        objectFit: "contain",
+                        backgroundColor: "#f8f9fa"
+                    }}
                 />
 
                 <div className="card-body d-flex flex-column">
