@@ -1,10 +1,10 @@
 import { db } from '../config/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
-export async function createProduct(title, description, price, img, productLink) {
+export async function createProduct(title, description, price, img1, img2, productLink) {
     try {
         const docRef = await addDoc(collection(db, "products"), {
-            title, description, price, img, productLink,
+            title, description, price, img1, img2, productLink,
             createdAt: new Date()
         });
 

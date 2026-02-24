@@ -8,7 +8,7 @@ export default function EditProduct() {
     const { id } = useParams();
 
     const [product, setProduct] = useState({
-        title: "", description: "", price: "", img: "", productLink: ""
+        title: "", description: "", price: "", img1: "", img2: "", productLink: ""
     });
 
     useEffect(() => {
@@ -77,15 +77,27 @@ export default function EditProduct() {
                             </div>
 
                             <div className="form-group mb-3">
-                                <label>Изображение</label>
+                                <label>Изображение 1</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    name="img"
-                                    defaultValue={product.img}
+                                    name="img1"
+                                    defaultValue={product.img1}
                                     required
                                 />
                             </div>
+
+                            <div className="form-group mb-3">
+                                <label>Изображение 2</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img2"
+                                    defaultValue={product.img2}
+                                    required
+                                />
+                            </div>
+
 
                             <div className="form-group mb-3">
                                 <label>Линк към продукт</label>

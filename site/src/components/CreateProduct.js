@@ -8,10 +8,10 @@ export default function CreateProduct() {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const { title, description, price, img, productLink } = Object.fromEntries(formData);
+        const { title, description, price, img1, img2, productLink } = Object.fromEntries(formData);
 
         try {
-            const result = await createProduct(title, description, price, img, productLink);
+            const result = await createProduct(title, description, price, img1, img2, productLink);
 
             if (result.status == 200) {
                 navigate('/products');
@@ -61,11 +61,20 @@ export default function CreateProduct() {
                             </div>
 
                             <div className="form-group mb-3">
-                                <label>Изображение</label>
+                                <label>Изображение 1</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    name="img"
+                                    name="img1"
+                                    required
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 2</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img2"
                                     required
                                 />
                             </div>
