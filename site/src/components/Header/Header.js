@@ -80,19 +80,19 @@ export default function Header() {
 
                             <div className="carousel-item active">
                                 <div className="img-box">
-                                    <img src="images/img1.jpg" alt="" />
+                                    <img src="/images/img1.jpg" alt="" />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="img-box">
-                                    <img src="images/img2.jpg" alt="" />
+                                    <img src="/images/img2.jpg" alt="" />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="img-box">
-                                    <img src="images/img3.jpg" alt="" />
+                                    <img src="/images/img3.jpg" alt="" />
                                 </div>
                             </div>
 
@@ -102,14 +102,14 @@ export default function Header() {
                             type="button"
                             data-bs-target="#carouselExampleControls"
                             data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon"></span>
+                            
                         </button>
 
                         <button className="carousel-control-next"
                             type="button"
                             data-bs-target="#carouselExampleControls"
                             data-bs-slide="next">
-                            <span className="carousel-control-next-icon"></span>
+                         
                         </button>
 
                     </div>
