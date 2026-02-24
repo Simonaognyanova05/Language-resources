@@ -719,6 +719,11 @@ a:focus {
   color: #222222;
 }
 
+@media (max-width: 991px) {
 
+    .btn-outline-light{
+      margin-top: 10px;
+    }
+}
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
