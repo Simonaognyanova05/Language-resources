@@ -45,9 +45,10 @@ export default function Home() {
 
                         <div className="col-lg-6 text-center mt-4 mt-lg-0">
                             <img
-                                src="images/img4.jpg"
+                                src="images/img4.jfif"
                                 alt="education"
                                 className="img-fluid rounded shadow-lg"
+                                style={{ maxWidth: "250px" }}
                             />
                         </div>
 
