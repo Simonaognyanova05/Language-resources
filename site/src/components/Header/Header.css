@@ -130,6 +130,20 @@
         height: 300px;
     }
 
+    .brand_box {
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+        font-weight: 600;
+        display: block;
+        white-space: normal;
+        /* позволява пренасяне */
+        line-height: 1.2;
+    }
+
 }
 
 /* =========================
