@@ -12,7 +12,7 @@ export default function ProductItem({ product }) {
                 }}
             >
                 <img
-                    src={product.img}
+                    src={product.img1}
                     alt={product.title}
                     className="card-img-top"
                     style={{

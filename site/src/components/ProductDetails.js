@@ -27,7 +27,7 @@ export default function ProductDetails() {
 
     const images = product.images?.length
         ? product.images
-        : [product.img, product.img2, product.img3].filter(Boolean);
+        : [product.img1, product.img2, product.img3].filter(Boolean);
 
     const prev = () => setIndex(i => i === 0 ? images.length - 1 : i - 1);
     const next = () => setIndex(i => i === images.length - 1 ? 0 : i + 1);

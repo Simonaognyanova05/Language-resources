@@ -131,3 +131,27 @@
     }
 
 }
+
+/* =========================
+   MOBILE LINES ONLY
+========================= */
+
+@media (max-width: 991px) {
+
+    .navbar-nav .nav-item {
+        position: relative;
+    }
+
+    /* линия под всеки линк освен последния */
+    .navbar-nav .nav-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 15%;
+        width: 70%;
+        height: 5px;
+        background-color: white;
+        opacity: 0.7;
+    }
+
+}
