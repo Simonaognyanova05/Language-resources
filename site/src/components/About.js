@@ -43,7 +43,7 @@ export default function About() {
                     {/* Image */}
                     <div className="col-lg-6 text-center">
                         <img
-                            src="/images/about-img.jpg"
+                            src="/images/about.jpg"
                             alt="about"
                             className="img-fluid"
                             style={{

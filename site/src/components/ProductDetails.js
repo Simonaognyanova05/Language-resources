@@ -27,7 +27,7 @@ export default function ProductDetails() {
 
     const images = product.images?.length
         ? product.images
-        : [product.img1, product.img2, product.img3].filter(Boolean);
+        : [product.img1, product.img2, product.img3, product.img4, product.img5, product.img6, product.img7, product.img8].filter(Boolean);
 
     const prev = () => setIndex(i => i === 0 ? images.length - 1 : i - 1);
     const next = () => setIndex(i => i === images.length - 1 ? 0 : i + 1);
@@ -135,7 +135,7 @@ export default function ProductDetails() {
 
                         <div className="bg-white p-5 rounded-4 shadow-sm">
 
-                            <h2 className="fw-bold mb-3">
+                            <h2 className="fw-bold mb-3 fs-4">
                                 {product.title}
                             </h2>
 

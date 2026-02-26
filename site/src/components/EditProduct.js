@@ -8,7 +8,7 @@ export default function EditProduct() {
     const { id } = useParams();
 
     const [product, setProduct] = useState({
-        title: "", description: "", price: "", img1: "", img2: "", productLink: ""
+        title: "", description: "", price: "", img1: "", img2: "", img3: "", img4: "", img5: "", img6: "", img7: "", img8: "", productLink: ""
     });
 
     useEffect(() => {
@@ -83,7 +83,7 @@ export default function EditProduct() {
                                     className="form-control"
                                     name="img1"
                                     defaultValue={product.img1}
-                                    required
+
                                 />
                             </div>
 
@@ -94,7 +94,65 @@ export default function EditProduct() {
                                     className="form-control"
                                     name="img2"
                                     defaultValue={product.img2}
-                                    required
+
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 3</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img3"
+                                    defaultValue={product.img3}
+
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 4</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img4"
+                                    defaultValue={product.img4}
+
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 5</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img5"
+                                    defaultValue={product.img5}
+
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 6</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img6"
+                                    defaultValue={product.img6}
+
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 7</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img7"
+                                    defaultValue={product.img7}
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label>Изображение 8</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="img8"
+                                    defaultValue={product.img8}
                                 />
                             </div>
 

@@ -15,7 +15,6 @@ export default function Header() {
             <li className="nav-item">
                 <Link className="nav-link" to="/about">За нас</Link>
             </li>
-
             <li className="nav-item">
                 <Link className="nav-link" to="/contacts">Контакти</Link>
             </li>
@@ -38,11 +37,9 @@ export default function Header() {
             <li className="nav-item">
                 <Link className="nav-link" to="/userProfile">Моят профил</Link>
             </li>
-
             <li className="nav-item">
                 <Link className="nav-link" to="/logout">Изход</Link>
             </li>
-
             <li className="nav-item">
                 <Link to="/cart" className="nav-link cart-link">
                     <i className="bi bi-cart3"></i>
@@ -66,15 +63,16 @@ export default function Header() {
         <>
             <div className="hero_area">
 
-                <div className="brand_box">
-                    <Link className="navbar-brand" to="/">
-                        <span>Учебен център Варна</span>
-                    </Link>
-                </div>
-
-                {/* ===== КАРУСЕЛ (НЕ ПИПАМЕ) ===== */}
+                {/* ===== КАРУСЕЛ С ТЕКСТ ОТГОРЕ ===== */}
                 <section className="slider_section position-relative">
                     <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+
+                        {/* HERO TEXT */}
+                        <div className="hero-overlay">
+                            <Link to="/" className="hero-title">
+                                Учебен център Варна
+                            </Link>
+                        </div>
 
                         <div className="carousel-inner">
 
@@ -98,19 +96,19 @@ export default function Header() {
 
                         </div>
 
-                        <button className="carousel-control-prev"
+                        <button
+                            className="carousel-control-prev"
                             type="button"
                             data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            
-                        </button>
+                            data-bs-slide="prev"
+                        ></button>
 
-                        <button className="carousel-control-next"
+                        <button
+                            className="carousel-control-next"
                             type="button"
                             data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                         
-                        </button>
+                            data-bs-slide="next"
+                        ></button>
 
                     </div>
                 </section>
@@ -122,7 +120,6 @@ export default function Header() {
 
                     <nav className="navbar navbar-expand-lg custom_nav-container">
 
-                        {/* HAMBURGER */}
                         <button
                             className="navbar-toggler"
                             type="button"
@@ -132,9 +129,7 @@ export default function Header() {
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
-                        {/* MENU */}
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
                             <ul className="navbar-nav mx-auto">
 
                                 <li className="nav-item">
@@ -149,7 +144,6 @@ export default function Header() {
                                 {user?.email ? loggedUser : unLoggedUser}
 
                             </ul>
-
                         </div>
 
                     </nav>

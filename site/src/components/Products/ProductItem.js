@@ -23,26 +23,30 @@ export default function ProductItem({ product }) {
                 />
 
                 <div className="card-body d-flex flex-column">
-                    <h5 className="card-title">{product.title}</h5>
+                    <h5 className="card-title fs-6 fw-semibold text-center">
+                        {product.title}
+                    </h5>
 
-                    {product.price && (
-                        <p className="fw-bold mb-3">
-                            {product.price}€
-                        </p>
-                    )}
+                    <div className="mt-auto text-center">
+                        {product.price && (
+                            <p className="fw-bold mb-3">
+                                {product.price}€
+                            </p>
+                        )}
 
-                    <Link
-                        to={`/product/${product.id}`}
-                        className="btn mt-auto"
-                        style={{
-                            background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
-                            color: "white",
-                            fontWeight: "500",
-                            borderRadius: "8px"
-                        }}
-                    >
-                        Разгледай
-                    </Link>
+                        <Link
+                            to={`/product/${product.id}`}
+                            className="btn"
+                            style={{
+                                background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                color: "white",
+                                fontWeight: "500",
+                                borderRadius: "8px"
+                            }}
+                        >
+                            Разгледай
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
