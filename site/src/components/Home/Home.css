@@ -1,0 +1,41 @@
+/* =========================
+   FEATURE BOXES
+========================= */
+
+.feature-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+    height: 100%;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+
+.feature-img {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.feature-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-box h5 {
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.feature-box p {
+    font-size: 14px;
+    color: #555;
+}

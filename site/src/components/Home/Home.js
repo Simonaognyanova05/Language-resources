@@ -1,5 +1,6 @@
+import './Home.css';
 import { Link } from "react-router-dom";
-import Testimonial from "./Testimonial/Testimonial";
+import Testimonial from "../Testimonial/Testimonial";
 
 export default function Home() {
     return (
@@ -62,31 +63,33 @@ export default function Home() {
                     <h2 className="mb-5">Защо да изберете нас?</h2>
 
                     <div className="row">
-
-                        <div className="col-md-4 mb-4">
-                            <div className="card border-0 shadow h-100 p-4">
+                        <div className="col-md-4">
+                            <div className="feature-box">
+                                <div className="feature-img">
+                                    <img src="/images/flexibleLearning.jfif" alt="Гъвкаво обучение" />
+                                </div>
                                 <h5>Гъвкаво обучение</h5>
-                                <p>
-                                    Учи когато и където пожелаеш.
-                                </p>
+                                <p>Учете когато и откъдето пожелаете.</p>
                             </div>
                         </div>
 
-                        <div className="col-md-4 mb-4">
-                            <div className="card border-0 shadow h-100 p-4">
+                        <div className="col-md-4">
+                            <div className="feature-box">
+                                <div className="feature-img">
+                                    <img src="/images/IndependentPreparation.jfif" alt="Самостоятелна подготовка" />
+                                </div>
                                 <h5>Самостоятелна подготовка</h5>
-                                <p>
-                                    Получаваш програма и инструкции от нас.
-                                </p>
+                                <p>Материали и тестове за индивидуална подготовка.</p>
                             </div>
                         </div>
 
-                        <div className="col-md-4 mb-4">
-                            <div className="card border-0 shadow h-100 p-4">
+                        <div className="col-md-4">
+                            <div className="feature-box">
+                                <div className="feature-img">
+                                    <img src="/images/officialCertificate.jfif" alt="Официален сертификат" />
+                                </div>
                                 <h5>Официален сертификат</h5>
-                                <p>
-                                    Явяваш се на изпит, когато си готов.
-                                </p>
+                                <p>Получавате удостоверение след успешно завършване.</p>
                             </div>
                         </div>
 
