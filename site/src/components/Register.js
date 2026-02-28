@@ -28,7 +28,8 @@ export default function Register() {
             onRegister(result);
             navigate('/');
         } catch (error) {
-            alert("Възникна грешка при влизане, моля опитайте по-късно!");
+            console.log(error); // Виж в конзолата на браузъра точната грешка!
+            alert("Грешка: " + error.message);
         }
     }
     return (

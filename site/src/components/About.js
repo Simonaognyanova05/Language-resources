@@ -12,7 +12,7 @@ export default function About() {
                     {/* Text Content */}
                     <div className="col-lg-6 mb-4 mb-lg-0">
                         <h1 className="fw-bold display-5 mb-4">
-                            По 21 езика в Учебен център Варна
+                            Нашата мисия
                         </h1>
 
                         <p className="lead text-muted mb-4">
@@ -20,11 +20,7 @@ export default function About() {
                         </p>
 
                         <p style={{ lineHeight: "1.8" }}>
-                            През 2006 г. започнахме пътуването си с една цел – да направим
-                            езиковото обучение достъпно, ефективно и забавно за всички
-                            възрасти. Присъединете се към нас и подобрете езиковите си
-                            умения по ваш избор – с гъвкави курсове в групи или
-                            индивидуално!
+                            Да променим начина, по който учениците учат, а учителите преподават — чрез иновативни, практични и лесно приложими образователни решения, които досега не са били достъпни на българския пазар.
                         </p>
 
                         <button
@@ -43,7 +39,7 @@ export default function About() {
                     {/* Image */}
                     <div className="col-lg-6 text-center">
                         <img
-                            src="/images/about.jpg"
+                            src="/images/ourMission.jfif"
                             alt="about"
                             className="img-fluid"
                             style={{

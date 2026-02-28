@@ -17,6 +17,30 @@ export default function Contacts() {
 
                     {/* Contact Form */}
                     <div className="col-lg-6 p-5">
+                        <div
+                            className="mb-4 p-3 rounded-4"
+                            style={{
+                                backgroundColor: "#f8f9fa",
+                                borderLeft: "4px solid #6A1B9A"
+                            }}
+                        >
+                            <p className="mb-1 fw-semibold">
+                                Можете да ни пишете директно на:
+                            </p>
+
+                            <a
+                                href="mailto:varnaeducate@gmail.com"
+                                className="text-decoration-none"
+                                style={{
+                                    color: "#B21F7A",
+                                    fontWeight: "600",
+                                    fontSize: "16px"
+                                }}
+                            >
+                                <i className="bi bi-envelope-fill me-2"></i>
+                                varnaeducate@gmail.com
+                            </a>
+                        </div>
 
                         <form>
                             <div className="mb-3">

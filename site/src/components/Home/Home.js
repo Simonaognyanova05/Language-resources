@@ -1,13 +1,31 @@
 import './Home.css';
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getLastThree } from "../../services/getLastThree";
 import Testimonial from "../Testimonial/Testimonial";
 
 export default function Home() {
+
+    const [latestProducts, setLatestProducts] = useState([]);
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                const products = await getLastThree();
+                setLatestProducts(products);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        loadProducts();
+    }, []);
+
     return (
         <>
             {/* HERO SECTION */}
             <section
-                className="py-5"
+                className="hero-section py-5"
                 style={{
                     background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
                     color: "white",
@@ -27,18 +45,16 @@ export default function Home() {
                                 модерна система за самостоятелна подготовка.
                             </p>
 
+                            <p className="lead">
+                                Регистрирай се сега и ще получиш безплатно един материал!
+                            </p>
+
                             <div className="mt-4">
-                                <Link
-                                    to="/products"
-                                    className="btn btn-light btn-lg me-3"
-                                >
-                                    Разгледай продуктите
+                                <Link to="/products" className="btn btn-light btn-lg me-3">
+                                    Каталог
                                 </Link>
 
-                                <Link
-                                    to="/contacts"
-                                    className="btn btn-light btn-lg me-3"
-                                >
+                                <Link to="/contacts" className="btn btn-light btn-lg">
                                     Пишете ни
                                 </Link>
                             </div>
@@ -57,7 +73,51 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* FEATURES */}
+            {/* LATEST PRODUCTS */}
+            <section className="py-5 bg-light">
+                <div className="container">
+                    <h2 className="text-center mb-5">Най-нови материали</h2>
+
+                    <div className="row">
+                        {latestProducts.map(product => (
+                            <div key={product.id} className="col-md-4 mb-4">
+                                <div className="latest-product-card shadow-sm h-100">
+
+                                    <div className="latest-product-img">
+                                        <img
+                                            src={product.img1 || "/images/default-product.jpg"}
+                                            alt={product.title}
+                                        />
+                                    </div>
+
+                                    <div className="p-3 d-flex flex-column">
+                                        <h6 className="fw-bold">{product.title}</h6>
+
+                                        <p className="text-muted small flex-grow-1">
+                                            {product.description?.substring(0, 100)}...
+                                        </p>
+
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <span className="fw-bold">
+                                                {product.price} €
+                                            </span>
+
+                                            <Link
+                                                to={`/product/${product.id}`}
+                                                className="btn btn-outline-dark btn-sm"
+                                            >
+                                                Виж
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section className="py-5 bg-light">
                 <div className="container text-center">
                     <h2 className="mb-5">Защо да изберете нас?</h2>

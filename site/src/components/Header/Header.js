@@ -38,6 +38,9 @@ export default function Header() {
                 <Link className="nav-link" to="/userProfile">Моят профил</Link>
             </li>
             <li className="nav-item">
+                <Link className="nav-link" to="/orderSteps">Инструкции за поръчка</Link>
+            </li>
+            <li className="nav-item">
                 <Link className="nav-link" to="/logout">Изход</Link>
             </li>
             <li className="nav-item">
@@ -70,11 +73,11 @@ export default function Header() {
                         {/* HERO TEXT */}
                         <div className="hero-overlay">
                             <Link to="/" className="hero-title">
-                                Учебен център Варна
+                                Електронни ресурси за обучение и себепознание
                             </Link>
                         </div>
 
-                        <div className="carousel-inner">
+                        {/* <div className="carousel-inner">
 
                             <div className="carousel-item active">
                                 <div className="img-box">
@@ -94,9 +97,12 @@ export default function Header() {
                                 </div>
                             </div>
 
+                        </div> */}
+                        <div className="img-box">
+                            <img src="/images/img2.jpg" alt="" />
                         </div>
 
-                        <button
+                        {/* <button
                             className="carousel-control-prev"
                             type="button"
                             data-bs-target="#carouselExampleControls"
@@ -108,7 +114,7 @@ export default function Header() {
                             type="button"
                             data-bs-target="#carouselExampleControls"
                             data-bs-slide="next"
-                        ></button>
+                        ></button> */}
 
                     </div>
                 </section>

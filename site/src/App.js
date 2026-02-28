@@ -10,13 +10,14 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import ResetPassword from "./components/ResetPassword";
 import Register from "./components/Register";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 import CreateProduct from "./components/CreateProduct";
 import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import AdminOrders from "./components/AdminOrders";
+import OrderSteps from "./components/OrderSteps/OrderSteps";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/info" element={<Info />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/orderSteps" element={<OrderSteps />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/editProduct/:id" element={<EditProduct />} />
         <Route path="/login" element={<Login />} />

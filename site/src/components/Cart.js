@@ -91,7 +91,7 @@ export default function Cart() {
                                             {/* Image */}
                                             <div className="col-md-2 text-center mb-3 mb-md-0">
                                                 <img
-                                                    src={item.img}
+                                                    src={item.img1}
                                                     alt={item.title}
                                                     className="img-fluid rounded-3"
                                                     style={{ maxHeight: "90px", objectFit: "cover" }}

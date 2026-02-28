@@ -70,38 +70,37 @@
 
 /* ===== HERO TEXT OVER IMAGE ===== */
 
+/* ===== HERO TEXT OVER IMAGE ===== */
+
 .hero-overlay {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    max-width: 900px;
+    /* ограничава текста между лицата */
+    padding: 0 20px;
     text-align: center;
     z-index: 10;
 }
 
 .hero-title {
-    font-size: 52px;
-    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
     color: white;
     text-decoration: none;
-    letter-spacing: 2px;
-    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-}
-
-.hero-title {
-    font-size: 52px;
-    font-weight: 800;
-    color: white;
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+    text-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    display: inline-block;
     transition: all 0.3s ease;
 }
 
 .hero-title:hover {
-    color: #B21F7A;
-    /* златисто */
+    color: #f5d6ff;
+    /* по-нежен лилав hover */
 }
 
 /* =========================
@@ -161,9 +160,12 @@
         height: 300px;
     }
 
+    .hero-overlay {
+        max-width: 90%;
+    }
+
     .hero-title {
-        font-size: 24px;
-        line-height: 1.2;
-        padding: 0 15px;
+        font-size: 22px;
+        line-height: 1.3;
     }
 }

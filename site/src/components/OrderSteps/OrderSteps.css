@@ -1,0 +1,12 @@
+.text-purple {
+    color: #6A1B9A;
+}
+
+.step-box {
+    transition: 0.3s ease;
+}
+
+.step-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
