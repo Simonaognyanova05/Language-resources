@@ -81,9 +81,11 @@
     .hero-section {
         position: relative;
         background: url("/public/images/img4.jfif") center/cover no-repeat !important;
-        padding-top: 80px;
-        padding-bottom: 80px;
+        padding-top: 70px;
+        padding-bottom: 70px;
         color: white;
+        text-align: center;
+        /* центрира текста */
     }
 
     .hero-section::before {
@@ -91,7 +93,6 @@
         position: absolute;
         inset: 0;
         background: rgba(0, 0, 0, 0.80);
-        /* тъмен overlay */
         z-index: 1;
     }
 
@@ -104,8 +105,53 @@
         display: none;
     }
 
+    /* 🔹 Намаляваме заглавието */
+    .hero-section h1 {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    /* 🔹 Намаляваме параграфите */
+    .hero-section .lead {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    /* 🔹 Центрираме бутоните */
+    .hero-section .mt-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .hero-section .btn {
         width: 100%;
+        max-width: 250px;
         margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-section .mt-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-section .btn {
+        width: 100%;
+        max-width: 260px;
+        margin: 8px 0;
+        /* еднакъв margin */
+    }
+
+    /* 🔥 махаме Bootstrap margin-end */
+    .hero-section .btn.me-3 {
+        margin-right: 0 !important;
     }
 }

@@ -10,3 +10,132 @@
     transform: translateY(-6px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
+
+.order-wrapper {
+    background: #f8f9fa;
+}
+
+.step-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.step-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.step-icon {
+    font-size: 40px;
+    color: #6A1B9A;
+    margin-bottom: 15px;
+}
+
+.video-wrapper video {
+    max-height: 380px;
+    object-fit: cover;
+}
+
+.gallery-img {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-img img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.gallery-img:hover img {
+    transform: scale(1.07);
+}
+
+.custom-list {
+    list-style: none;
+    padding: 0;
+}
+
+.custom-list li {
+    margin-bottom: 12px;
+}
+
+.custom-list i {
+    color: #6A1B9A;
+    margin-right: 8px;
+}
+
+.light-box {
+    background: white;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== AUDIENCE SECTION ===== */
+
+.audience-section {
+    padding: 40px 0;
+}
+
+.audience-card {
+    background: linear-gradient(135deg, #ffffff, #f3f0ff);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.video-modern video {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(106, 27, 154, 0.25);
+}
+
+.audience-title {
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.audience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.audience-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+}
+
+.audience-item i {
+    font-size: 22px;
+    color: #6A1B9A;
+    margin-top: 3px;
+}
+
+.audience-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 991px) {
+    .audience-card {
+        padding: 30px;
+    }
+
+    .audience-title {
+        text-align: center;
+    }
+}

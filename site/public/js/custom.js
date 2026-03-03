@@ -1,16 +1,28 @@
-// to get current year
+// ===== GET CURRENT YEAR =====
 function getYear() {
-    var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
-    document.querySelector("#displayYear").innerHTML = currentYear;
+    const yearElement = document.querySelector("#displayYear");
+
+    if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.innerHTML = currentYear;
+    }
 }
 
-getYear();
+// Изчакваме DOM да е зареден
+document.addEventListener("DOMContentLoaded", getYear);
 
-// nav menu
+
+// ===== NAV MENU =====
 function openNav() {
-    document.getElementById("myNav").classList.toggle("menu_width");
-    document
-        .querySelector(".custom_menu-btn")
-        .classList.toggle("menu_btn-style");
+
+    const nav = document.getElementById("myNav");
+    const menuBtn = document.querySelector(".custom_menu-btn");
+
+    if (nav) {
+        nav.classList.toggle("menu_width");
+    }
+
+    if (menuBtn) {
+        menuBtn.classList.toggle("menu_btn-style");
+    }
 }

@@ -184,7 +184,7 @@ export default function ProductDetails() {
                                         WebkitTextFillColor: "transparent"
                                     }}
                                 >
-                                    {product.price} €
+                                    {Number(product.price).toFixed(2)}€/{Number(product.price * 1.95).toFixed(2)} лв.
                                 </h3>
 
                                 <button

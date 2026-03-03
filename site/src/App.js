@@ -18,6 +18,7 @@ import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import AdminOrders from "./components/AdminOrders";
 import OrderSteps from "./components/OrderSteps/OrderSteps";
+import CookiePolicy from "./components/CookiePolicy";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/orders" element={<AdminOrders />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
+
 
       </Routes>
       <Footer />

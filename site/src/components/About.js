@@ -16,6 +16,11 @@ export default function About() {
                         </h1>
 
                         <p className="lead text-muted mb-4">
+                            Практични образователни ресурси за ученици, учители и самообучаващи се.  <br />
+                            Тестове, наръчници и планери, създадени да улесят ученето и преподаванео.
+                        </p>
+
+                        <p className="lead text-muted mb-4">
                             Удобни графици, съобразени с вашето време.
                         </p>
 
@@ -50,6 +55,90 @@ export default function About() {
 
                 </div>
             </div>
+
+            {/* ===== FOR WHO + VIDEO ===== */}
+            <div className="audience-section mb-5">
+                <div className="audience-card">
+
+                    <div className="row align-items-center g-5">
+
+                        {/* VIDEO */}
+                        <div className="col-lg-6">
+                            <div className="video-modern">
+                                <video
+                                    controls
+                                    poster="/images/video-cover.jpg"
+                                >
+                                    <source src="/images/video.mp4" type="video/mp4" />
+                                    Вашият браузър не поддържа видео.
+                                </video>
+                            </div>
+                        </div>
+
+                        {/* TEXT */}
+                        <div className="col-lg-6">
+                            <h3 className="audience-title mb-4">
+                                За кого са предназначени?
+                            </h3>
+
+                            <div className="audience-list">
+
+                                <div className="audience-item">
+                                    <i className="bi bi-mortarboard-fill"></i>
+                                    <span>Ученици, които искат да се организират и да напредват по-уверено</span>
+                                </div>
+
+                                <div className="audience-item">
+                                    <i className="bi bi-journal-text"></i>
+                                    <span>Учители, които търсят готови и работещи инструменти</span>
+                                </div>
+
+                                <div className="audience-item">
+                                    <i className="bi bi-people-fill"></i>
+                                    <span>Родители, които искат практична подкрепа у дома</span>
+                                </div>
+
+                                <div className="audience-item">
+                                    <i className="bi bi-lightbulb-fill"></i>
+                                    <span>Самоподготвящи се, които ценят структурата и ясния подход</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            {/* ===== IMAGE GALLERY ===== */}
+            <div className="mb-5">
+                <h3 className="fw-bold text-center mb-4">Нашите сертификати</h3>
+
+                <div className="row gallery-row">
+
+                    <div className="col-md-4 mb-4">
+                        <div className="gallery-img">
+                            <img src="/images/ourMaterials1.jfif" alt="Материал 1" />
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 mb-4">
+                        <div className="gallery-img">
+                            <img src="/images/ourMaterials2.jfif" alt="Материал 2" />
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 mb-4">
+                        <div className="gallery-img">
+                            <img src="/images/ourMaterials3.jfif" alt="Материал 3" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+          
         </section>
     );
 }

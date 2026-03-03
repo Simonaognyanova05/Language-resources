@@ -1,0 +1,46 @@
+.footer_section {
+    background-color: #fcfaff;
+    /* Още по-нежен лилав нюанс */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: #4a4a4a;
+}
+
+/* Стилизиране на значката за България */
+.delivery-badge {
+    background-color: #fff3f3;
+    color: #d63384;
+    border: 1px border-subtle #f5c2c7;
+    font-weight: 500;
+}
+
+/* Икони в списъка */
+.company-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #6c757d;
+}
+
+.company-list i {
+    color: #6f42c1;
+    /* Лилав цвят за иконите */
+}
+
+/* Стилизиране на линковете */
+.legal-links a {
+    text-decoration: none;
+    color: #6c757d;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: #6f42c1;
+    padding-right: 5px;
+    /* Лек ефект на преместване */
+}
+
+/* Линия за разделяне */
+hr {
+    border-color: #6f42c1 !important;
+}

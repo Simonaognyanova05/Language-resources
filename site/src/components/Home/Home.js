@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getLastThree } from "../../services/getLastThree";
 import Testimonial from "../Testimonial/Testimonial";
+import ProductItem from './HomeItem';
 
 export default function Home() {
 
@@ -41,8 +42,12 @@ export default function Home() {
                             </h1>
 
                             <p className="lead">
-                                Обучение по 23 езика с гъвкави графици и
-                                модерна система за самостоятелна подготовка.
+                                Учебен център Варна представя своята колекция от образователни ресурси. 
+                            </p>
+
+                            <p className="lead">
+                                Практически тестове, наръчници и планери за ученици, учители и самостоятелно обучаващи се. 
+                                Създадени от преподаватели за реална подготовка и видими резултати. 
                             </p>
 
                             <p className="lead">
@@ -80,39 +85,7 @@ export default function Home() {
 
                     <div className="row">
                         {latestProducts.map(product => (
-                            <div key={product.id} className="col-md-4 mb-4">
-                                <div className="latest-product-card shadow-sm h-100">
-
-                                    <div className="latest-product-img">
-                                        <img
-                                            src={product.img1 || "/images/default-product.jpg"}
-                                            alt={product.title}
-                                        />
-                                    </div>
-
-                                    <div className="p-3 d-flex flex-column">
-                                        <h6 className="fw-bold">{product.title}</h6>
-
-                                        <p className="text-muted small flex-grow-1">
-                                            {product.description?.substring(0, 100)}...
-                                        </p>
-
-                                        <div className="d-flex justify-content-between align-items-center">
-                                            <span className="fw-bold">
-                                                {product.price} €
-                                            </span>
-
-                                            <Link
-                                                to={`/product/${product.id}`}
-                                                className="btn btn-outline-dark btn-sm"
-                                            >
-                                                Виж
-                                            </Link>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            <ProductItem product={product} />
                         ))}
                     </div>
                 </div>

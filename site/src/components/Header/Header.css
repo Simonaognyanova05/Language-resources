@@ -109,40 +109,40 @@
 
 @media (max-width: 991px) {
 
-    .slider_section,
-    .carousel,
-    .carousel-inner,
-    .carousel-item,
-    .img-box {
-        height: 420px;
-    }
-
-    .hero-title {
-        font-size: 36px;
-    }
-
     .navbar-nav {
         width: 100%;
         text-align: center;
-        padding-top: 10px;
+        padding-top: 4px;
     }
 
     .navbar-nav .nav-item {
         width: 100%;
-        padding: 10px 0;
+        padding: 4px 0;
+        /* по-малко празно */
         position: relative;
     }
 
+    .navbar-nav .nav-link {
+        padding: 6px 0;
+        /* леко намалено */
+        font-size: 15px;
+        display: block;
+    }
+
+    /* ЛИНИИТЕ ОСТАВАТ СЪЩИТЕ */
     .navbar-nav .nav-item:not(:last-child)::after {
         content: "";
         position: absolute;
-        bottom: 0;
         left: 15%;
+        bottom: -4px;
+        /* закотвяме я малко по-надолу */
         width: 70%;
         height: 4px;
+        /* не пипаме дебелината */
         background-color: white;
         opacity: 0.7;
     }
+
 }
 
 

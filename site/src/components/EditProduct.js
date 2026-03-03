@@ -65,13 +65,16 @@ export default function EditProduct() {
                                 />
                             </div>
 
+
                             <div className="form-group mb-3">
-                                <label>Цена</label>
+                                <label>Цена: </label>
                                 <input
                                     type="number"
                                     className="form-control"
                                     name="price"
                                     defaultValue={product.price}
+                                    step="0.01"
+                                    min="0"
                                     required
                                 />
                             </div>

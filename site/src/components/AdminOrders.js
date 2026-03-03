@@ -45,13 +45,29 @@ export default function AdminOrders() {
 
             const userRef = doc(db, "users", orderData.userId);
 
-            const purchasedItems = orderData.items.map(item => ({
-                id: item.id || "",
-                title: item.title || "Материал",
-                fileUrl: item.productLink || "",   // <-- взимаме productLink
-                price: Number(item.price) || 0,
-                purchasedAt: new Date()
-            }));
+            const WEEKLY_PRODUCT_ID = "b0deEclkX5DujxpvWFlR";
+
+            const purchasedItems = orderData.items.map(item => {
+
+                const now = new Date();
+
+                const baseData = {
+                    id: item.id || "",
+                    title: item.title || "Материал",
+                    fileUrl: item.productLink || "",
+                    price: Number(item.price) || 0,
+                    purchasedAt: now
+                };
+ 
+                // 👉 Само ако е абонаментния продукт
+                if (item.id === WEEKLY_PRODUCT_ID) {
+                    baseData.expiresAt = new Date(
+                        now.getTime() + 10 * 1000
+                    );
+                }
+
+                return baseData;
+            });
 
             await setDoc(userRef, {
                 purchasedMaterials: arrayUnion(...purchasedItems)
@@ -85,11 +101,11 @@ export default function AdminOrders() {
                             </div>
 
                             <span className={`badge bg-${order.status === "pending"
-                                    ? "warning"
-                                    : order.status === "paid"
-                                        ? "success"
-                                        : "primary"
-                                }`} style={{height: "20px"}}>
+                                ? "warning"
+                                : order.status === "paid"
+                                    ? "success"
+                                    : "primary"
+                                }`} style={{ height: "20px" }}>
                                 {order.status}
                             </span>
                         </div>

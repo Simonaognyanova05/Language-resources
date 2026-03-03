@@ -77,7 +77,7 @@ export default function Header() {
                             </Link>
                         </div>
 
-                        {/* <div className="carousel-inner">
+                        <div className="carousel-inner">
 
                             <div className="carousel-item active">
                                 <div className="img-box">
@@ -96,13 +96,18 @@ export default function Header() {
                                     <img src="/images/img3.jpg" alt="" />
                                 </div>
                             </div>
+                             <div className="carousel-item">
+                                <div className="img-box">
+                                    <img src="/images/img5.jpg" alt="" />
+                                </div>
+                            </div>
 
-                        </div> */}
-                        <div className="img-box">
-                            <img src="/images/img2.jpg" alt="" />
                         </div>
+                        {/* <div className="img-box">
+                            <img src="/images/img2.jpg" alt="" />
+                        </div> */}
 
-                        {/* <button
+                        <button
                             className="carousel-control-prev"
                             type="button"
                             data-bs-target="#carouselExampleControls"
@@ -114,7 +119,7 @@ export default function Header() {
                             type="button"
                             data-bs-target="#carouselExampleControls"
                             data-bs-slide="next"
-                        ></button> */}
+                        ></button>
 
                     </div>
                 </section>

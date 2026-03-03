@@ -17,7 +17,24 @@ export default function UserProfile() {
             const snap = await getDoc(ref);
 
             if (snap.exists()) {
-                setMaterials(snap.data().purchasedMaterials || []);
+
+                const allMaterials = snap.data().purchasedMaterials || [];
+
+                const activeMaterials = allMaterials.filter(m => {
+
+                    // ако няма expiresAt → постоянен продукт
+                    if (!m.expiresAt) return true;
+
+                    // Firestore Timestamp
+                    if (m.expiresAt?.seconds) {
+                        return new Date(m.expiresAt.seconds * 1000) > new Date();
+                    }
+
+                    // ако е записан като normal Date
+                    return new Date(m.expiresAt) > new Date();
+                });
+
+                setMaterials(activeMaterials);
             }
         };
 
