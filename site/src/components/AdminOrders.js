@@ -58,11 +58,11 @@ export default function AdminOrders() {
                     price: Number(item.price) || 0,
                     purchasedAt: now
                 };
- 
+
                 // 👉 Само ако е абонаментния продукт
                 if (item.id === WEEKLY_PRODUCT_ID) {
                     baseData.expiresAt = new Date(
-                        now.getTime() + 10 * 1000
+                        now.getTime() + (7 * 24 * 60 * 60 * 1000)
                     );
                 }
 

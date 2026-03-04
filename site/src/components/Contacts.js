@@ -39,7 +39,23 @@ export default function Contacts() {
                             >
                                 <i className="bi bi-envelope-fill me-2"></i>
                                 varnaeducate@gmail.com
+
                             </a>
+                            <br />
+                            <a
+                                href=" 0879481221"
+                                className="text-decoration-none"
+                                style={{
+                                    color: "#B21F7A",
+                                    fontWeight: "600",
+                                    fontSize: "16px"
+                                }}
+                            >
+                                <i className="bi bi-phone-fill me-2"></i>
+                                0879481221
+
+                            </a>
+
                         </div>
 
                         <form>

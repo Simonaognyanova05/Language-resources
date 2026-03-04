@@ -85,7 +85,7 @@ export default function Checkout() {
                     email: formData.email,
                     phone: formData.phone,
                     total: totalPrice.toFixed(2),
-                    to_email: "pointsmart909@gmail.com"
+                    to_email: "anna_zlateva81@abv.bg"
                 },
                 "NL354V9ZykEYwGYmA"
             );
@@ -237,10 +237,10 @@ export default function Checkout() {
                             </h6>
 
                             <div className="small text-muted" style={{ lineHeight: "1.8" }}>
-                                <p><strong>Банка:</strong> Example Bank</p>
-                                <p><strong>IBAN:</strong> BG00 XXXX 0000 0000 0000</p>
-                                <p><strong>BIC:</strong> XXXXXXXX</p>
-                                <p><strong>Основание:</strong> Номер на поръчка</p>
+                                <p><strong>Основател:</strong> Дар Слово ЕООД</p>
+                                <p><strong>IBAN:</strong> BG15 BPBI 7942 1027 5407 01</p>
+                                <p><strong>BIC:</strong> BPBIBGSF</p>
+                                <p><strong>Основание:</strong> Името на един от материалите</p>
                             </div>
                         </div>
 

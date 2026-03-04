@@ -34,37 +34,48 @@ export default function Home() {
                 }}
             >
                 <div className="container">
-                    <div className="row align-items-center">
+                    <div className="row justify-content-center">
 
-                        <div className="col-lg-6">
-                            <h1 className="fw-bold mb-4">
-                                Учебен център Варна
-                            </h1>
 
-                            <p className="lead">
-                                Учебен център Варна представя своята колекция от образователни ресурси. 
-                            </p>
+                        <div className="col-lg-10 col-xl-9 hero-content text-center">
 
-                            <p className="lead">
-                                Практически тестове, наръчници и планери за ученици, учители и самостоятелно обучаващи се. 
-                                Създадени от преподаватели за реална подготовка и видими резултати. 
-                            </p>
+                            <div className="hero-text-wrapper">
 
-                            <p className="lead">
-                                Регистрирай се сега и ще получиш безплатно един материал!
-                            </p>
+                                <h1 className="fw-bold mb-3">
+                                    Учебен център Варна
+                                </h1>
 
-                            <div className="mt-4">
-                                <Link to="/products" className="btn btn-light btn-lg me-3">
-                                    Каталог
-                                </Link>
+                                <h3 className="fw-bold mb-4 hero-subtitle">
+                                    Електронни ресурси за сваляне
+                                </h3>
 
-                                <Link to="/contacts" className="btn btn-light btn-lg">
-                                    Пишете ни
-                                </Link>
+                                <p className="lead">
+                                    Учебен център Варна представя своята колекция от образователни ресурси.
+                                </p>
+
+                                <p className="lead">
+                                    Практически тестове, наръчници и планери за ученици, учители и самостоятелно обучаващи се.
+                                    Създадени от преподаватели за реална подготовка и видими резултати.
+                                </p>
+
+                                <p className="lead hero-highlight">
+                                    Регистрирай се сега и ще получиш безплатно един материал!
+                                </p>
+
+                                <div className="mt-4 hero-buttons">
+                                    <Link to="/products" className="btn btn-light btn-lg me-3">
+                                        Каталог
+                                    </Link>
+
+                                    <Link to="/contacts" className="btn btn-outline-light btn-lg">
+                                        Пишете ни
+                                    </Link>
+                                </div>
+
                             </div>
                         </div>
 
+                        {/* 
                         <div className="col-lg-6 text-center mt-4 mt-lg-0">
                             <img
                                 src="images/img4.jfif"
@@ -72,7 +83,7 @@ export default function Home() {
                                 className="img-fluid rounded shadow-lg"
                                 style={{ maxWidth: "250px" }}
                             />
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>
@@ -82,6 +93,7 @@ export default function Home() {
             <section className="py-5 bg-light">
                 <div className="container">
                     <h2 className="text-center mb-5">Най-нови материали</h2>
+                    <p style={{ textAlign: "center", marginBottom: "20px" }}>Може да намерите всички материали в нашия каталог</p>
 
                     <div className="row">
                         {latestProducts.map(product => (
@@ -97,7 +109,7 @@ export default function Home() {
                     <p>Ние създадохме първия по рода си електронен магазин, който обединява тестове, практически наръчници и стратегии за ефективно учене в една цялостна система. Нашите продукти са разработени специално за ученици, учители и родители, които търсят реални резултати, а не просто теория.
                         Ние сме новатори в този подход – досега на пазара не са съществували подобни цялостни решения, съчетаващи самоподготовка, диагностика на знанията и изграждане на умения за учене.</p>
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-md-4">
                             <div className="feature-box">
                                 <div className="feature-img">
                                     <img src="/images/flexibleLearning.jfif" alt="Гъвкаво обучение" />
@@ -119,7 +131,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="col-md-3">
+                        <div className="col-md-4">
                             <div className="feature-box">
                                 <div className="feature-img">
                                     <img src="/images/IndependentPreparation.jfif" alt="Самостоятелна подготовка" />
@@ -141,7 +153,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="col-md-3">
+                        <div className="col-md-4">
                             <div className="feature-box">
                                 <div className="feature-img">
                                     <img src="/images/officialCertificate.jfif" alt="Официален сертификат" />
@@ -158,17 +170,6 @@ export default function Home() {
                                     работиш по модели, близки до реалната изпитна среда.
 
                                     Резултатът е по-добра подготовка, по-висока мотивация и ясна посока за развитие.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="feature-box">
-                                <div className="feature-img">
-                                    <img src="/images/ourMission.jfif" alt="Нашата мисия" />
-                                </div>
-                                <h5>Нашата мисия</h5>
-                                <p>
-                                    Да променим начина, по който учениците учат, а учителите преподават — чрез иновативни, практични и лесно приложими образователни решения, които досега не са били достъпни на българския пазар.
-                                </p>
                             </div>
                         </div>
 

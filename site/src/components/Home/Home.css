@@ -73,28 +73,82 @@
 }
 
 /* =========================
+   HERO DESKTOP CENTER FIX
+========================= */
+
+.hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text-wrapper {
+    max-width: 700px;
+}
+
+.hero-section h1 {
+    font-size: 52px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    opacity: 0.9;
+}
+
+.hero-section .lead {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-buttons .btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    transform: translateY(-3px);
+}
+
+
+
+/* =========================
    HERO MOBILE BACKGROUND
 ========================= */
 
 @media (max-width: 991px) {
 
-    .hero-section {
+    /* .hero-section {
         position: relative;
         background: url("/public/images/img4.jfif") center/cover no-repeat !important;
         padding-top: 70px;
         padding-bottom: 70px;
         color: white;
         text-align: center;
-        /* центрира текста */
-    }
+    } */
 
-    .hero-section::before {
+    /* .hero-section::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.80);
         z-index: 1;
-    }
+    } */
 
     .hero-section .container {
         position: relative;
