@@ -20,6 +20,7 @@ import Checkout from "./components/Checkout";
 import AdminOrders from "./components/AdminOrders";
 import OrderSteps from "./components/OrderSteps/OrderSteps";
 import CookiePolicy from "./components/CookiePolicy";
+import Terms from "./components/Terms";
 
 function App() {
   return (
@@ -51,8 +52,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orders" element={<AdminOrders />} />
           <Route path="/cookies" element={<CookiePolicy />} />
-
-
+          <Route path="/terms" element={<Terms />} />
         </Routes>
         <Footer />
       </div>
