@@ -1,4 +1,5 @@
 import './Home.css';
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getLastThree } from "../../services/getLastThree";
@@ -24,6 +25,11 @@ export default function Home() {
 
     return (
         <>
+            <Helmet>
+                <title>Учебен център Варна | Електронни ресурси за сваляне</title>
+                <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+                <link rel="canonical" href="https://language-center-varna.eu/" />
+            </Helmet>
             {/* HERO SECTION */}
             <section
                 className="hero-section py-5"

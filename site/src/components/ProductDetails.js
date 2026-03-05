@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { deleteDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -86,144 +87,150 @@ export default function ProductDetails() {
     };
 
     return (
+        <>
+            <Helmet>
+                <title>Подробности | Електронни ресурси за сваляне</title>
+                <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+                <link rel="canonical" href={`{https://language-center-varna.eu/${id}}`} />
+            </Helmet>
 
-        <section className="py-5" style={{ background: "#f8f9fa" }}>
+            <section className="py-5" style={{ background: "#f8f9fa" }}>
 
-            <div className="container">
+                <div className="container">
 
-                <div className="row align-items-center g-5">
+                    <div className="row align-items-center g-5">
 
-                    {/* IMAGE */}
-                    <div className="col-lg-6">
+                        {/* IMAGE */}
+                        <div className="col-lg-6">
 
-                        <div className="bg-white p-4 rounded-4 shadow-sm text-center"
-                            style={{
+                            <div className="bg-white p-4 rounded-4 shadow-sm text-center"
+                                style={{
+                                    position: "relative",
+                                    height: "460px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}>
+
+                                {images.length > 0 && (
+
+                                    <img
+                                        src={images[index]}
+                                        alt={product.title}
+                                        style={{
+                                            maxHeight: "100%",
+                                            maxWidth: "100%",
+                                            objectFit: "contain"
+                                        }}
+                                    />
+
+                                )}
+
+                                {images.length > 1 && (
+                                    <>
+                                        <button onClick={prev} style={arrowStyle("left")}>‹</button>
+                                        <button onClick={next} style={arrowStyle("right")}>›</button>
+                                    </>
+                                )}
+
+                            </div>
+
+                        </div>
+
+                        {/* DETAILS */}
+                        <div className="col-lg-6">
+                            <div className="bg-white p-5 rounded-4 shadow-sm" style={{
                                 position: "relative",
-                                height: "460px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center"
+                                overflow: "hidden",
+                                // Правим фоновите линии (notebook style)
+                                backgroundImage: "radial-gradient(#d1d1d1 1px, transparent 1px), linear-gradient(#f1f1f1 1px, transparent 1px)",
+                                backgroundSize: "20px 20px, 100% 30px",
+                                backgroundColor: "#fff"
                             }}>
 
-                            {images.length > 0 && (
+                                {/* Декорация: Химикал (Emoji или Икона) */}
+                                <span style={{
+                                    position: "absolute",
+                                    top: "10px",
+                                    right: "20px",
+                                    fontSize: "2rem",
+                                    transform: "rotate(15deg)",
+                                    opacity: "0.6"
+                                }}>🖋️</span>
 
-                                <img
-                                    src={images[index]}
-                                    alt={product.title}
-                                    style={{
-                                        maxHeight: "100%",
-                                        maxWidth: "100%",
-                                        objectFit: "contain"
-                                    }}
-                                />
+                                {/* Декорация: Линийка */}
+                                <div style={{
+                                    position: "absolute",
+                                    bottom: "-10px",
+                                    left: "20px",
+                                    fontSize: "1.5rem",
+                                    transform: "rotate(-5deg)",
+                                    opacity: "0.4",
+                                    letterSpacing: "2px"
+                                }}>📏━━━━━━</div>
 
-                            )}
+                                {/* Съдържанието на кутията */}
+                                <div style={{ position: "relative", zIndex: 1 }}>
+                                    <h2 className="fw-bold mb-3 fs-4" style={{ color: "#333" }}>
+                                        {product.title}
+                                    </h2>
 
-                            {images.length > 1 && (
-                                <>
-                                    <button onClick={prev} style={arrowStyle("left")}>‹</button>
-                                    <button onClick={next} style={arrowStyle("right")}>›</button>
-                                </>
-                            )}
+                                    <p className="text-muted mb-4" style={{
+                                        lineHeight: "1.8",
+                                        minHeight: "100px",
+                                        fontWeight: "500"
+                                    }}>
+                                        {product.description}
+                                    </p>
 
-                        </div>
+                                    <h3
+                                        className="fw-bold mb-4"
+                                        style={{
+                                            background: "linear-gradient(135deg,#B21F7A,#6A1B9A)",
+                                            WebkitBackgroundClip: "text",
+                                            WebkitTextFillColor: "transparent"
+                                        }}
+                                    >
+                                        {Number(product.price).toFixed(2)}€/{Number(product.price * 1.95).toFixed(2)} лв.
+                                    </h3>
 
-                    </div>
+                                    <button
+                                        className="btn w-100 py-3 mb-3 shadow-sm"
+                                        onClick={handleAddToCart}
+                                        style={{
+                                            background: "linear-gradient(135deg,#B21F7A,#6A1B9A)",
+                                            color: "white",
+                                            border: "none",
+                                            borderRadius: "50px",
+                                            fontWeight: "600",
+                                            transition: "transform 0.2s"
+                                        }}
+                                        onMouseOver={(e) => e.target.style.transform = "scale(1.02)"}
+                                        onMouseOut={(e) => e.target.style.transform = "scale(1)"}
+                                    >
+                                        Добави в количката
+                                    </button>
 
-                    {/* DETAILS */}
-                    <div className="col-lg-6">
-                        <div className="bg-white p-5 rounded-4 shadow-sm" style={{
-                            position: "relative",
-                            overflow: "hidden",
-                            // Правим фоновите линии (notebook style)
-                            backgroundImage: "radial-gradient(#d1d1d1 1px, transparent 1px), linear-gradient(#f1f1f1 1px, transparent 1px)",
-                            backgroundSize: "20px 20px, 100% 30px",
-                            backgroundColor: "#fff"
-                        }}>
-
-                            {/* Декорация: Химикал (Emoji или Икона) */}
-                            <span style={{
-                                position: "absolute",
-                                top: "10px",
-                                right: "20px",
-                                fontSize: "2rem",
-                                transform: "rotate(15deg)",
-                                opacity: "0.6"
-                            }}>🖋️</span>
-
-                            {/* Декорация: Линийка */}
-                            <div style={{
-                                position: "absolute",
-                                bottom: "-10px",
-                                left: "20px",
-                                fontSize: "1.5rem",
-                                transform: "rotate(-5deg)",
-                                opacity: "0.4",
-                                letterSpacing: "2px"
-                            }}>📏━━━━━━</div>
-
-                            {/* Съдържанието на кутията */}
-                            <div style={{ position: "relative", zIndex: 1 }}>
-                                <h2 className="fw-bold mb-3 fs-4" style={{ color: "#333" }}>
-                                    {product.title}
-                                </h2>
-
-                                <p className="text-muted mb-4" style={{
-                                    lineHeight: "1.8",
-                                    minHeight: "100px",
-                                    fontWeight: "500"
-                                }}>
-                                    {product.description}
-                                </p>
-
-                                <h3
-                                    className="fw-bold mb-4"
-                                    style={{
-                                        background: "linear-gradient(135deg,#B21F7A,#6A1B9A)",
-                                        WebkitBackgroundClip: "text",
-                                        WebkitTextFillColor: "transparent"
-                                    }}
-                                >
-                                    {Number(product.price).toFixed(2)}€/{Number(product.price * 1.95).toFixed(2)} лв.
-                                </h3>
-
-                                <button
-                                    className="btn w-100 py-3 mb-3 shadow-sm"
-                                    onClick={handleAddToCart}
-                                    style={{
-                                        background: "linear-gradient(135deg,#B21F7A,#6A1B9A)",
-                                        color: "white",
-                                        border: "none",
-                                        borderRadius: "50px",
-                                        fontWeight: "600",
-                                        transition: "transform 0.2s"
-                                    }}
-                                    onMouseOver={(e) => e.target.style.transform = "scale(1.02)"}
-                                    onMouseOut={(e) => e.target.style.transform = "scale(1)"}
-                                >
-                                    Добави в количката
-                                </button>
-
-                                {user && isAdmin(user.email) && (
-                                    <div className="d-grid gap-2 mt-4">
-                                        <Link to={`/editProduct/${id}`} className="btn btn-sm btn-outline-dark rounded-pill">
-                                            Редактирай
-                                        </Link>
-                                        <button className="btn btn-sm btn-outline-danger rounded-pill" onClick={() => handleDelete(id)}>
-                                            Изтрий
-                                        </button>
-                                    </div>
-                                )}
+                                    {user && isAdmin(user.email) && (
+                                        <div className="d-grid gap-2 mt-4">
+                                            <Link to={`/editProduct/${id}`} className="btn btn-sm btn-outline-dark rounded-pill">
+                                                Редактирай
+                                            </Link>
+                                            <button className="btn btn-sm btn-outline-danger rounded-pill" onClick={() => handleDelete(id)}>
+                                                Изтрий
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
 
-            </div>
-
-        </section>
-
+            </section>
+        </>
     );
 }
 

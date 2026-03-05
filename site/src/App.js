@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
@@ -22,32 +23,40 @@ import CookiePolicy from "./components/CookiePolicy";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/info" element={<Info />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/orderSteps" element={<OrderSteps />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/editProduct/:id" element={<EditProduct />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/forgottenPass" element={<ResetPassword />} />
-        <Route path="/userProfile" element={<UserProfile />} />
-        <Route path="/createProduct" element={<CreateProduct />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/orders" element={<AdminOrders />} />
-        <Route path="/cookies" element={<CookiePolicy />} />
+    <>
+      <Helmet>
+        <title>Електронни ресурси за сваляне | Начало</title>
+        <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+        <link rel="canonical" href="https://language-center-varna.eu/" />
+      </Helmet>
+
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/info" element={<Info />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/orderSteps" element={<OrderSteps />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/editProduct/:id" element={<EditProduct />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/forgottenPass" element={<ResetPassword />} />
+          <Route path="/userProfile" element={<UserProfile />} />
+          <Route path="/createProduct" element={<CreateProduct />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orders" element={<AdminOrders />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
 
 
-      </Routes>
-      <Footer />
-    </div>
+        </Routes>
+        <Footer />
+      </div>
+    </>
   );
 }
 

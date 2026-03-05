@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { getProducts } from "../../services/getProducts";
 import ProductItem from "./ProductItem";
 
@@ -27,65 +28,73 @@ export default function Products() {
     };
 
     return (
-        <section className="py-5 bg-light">
-            <div className="container">
+        <>
+            <Helmet>
+                <title>Каталог | Електронни ресурси за сваляне</title>
+                <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+                <link rel="canonical" href="https://language-center-varna.eu/products" />
+            </Helmet>
 
-                <div className="text-center mb-5">
-                    <h2 className="fw-bold">Нашите продукти</h2>
-                    <p className="text-muted">
-                        Всичко необходимо за по-добро учене на едно място. <br />
-                        Практически тестове, полезни ръководства и работещи планери за ученици и учители.
-                    </p>
-                </div>
+            <section className="py-5 bg-light">
+                <div className="container">
 
-                <div className="row">
-                    {currentProducts.length > 0 ? (
-                        currentProducts.map(x => (
-                            <ProductItem key={x.id} product={x} />
-                        ))
-                    ) : (
-                        <div className="text-center text-muted">
-                            Няма налични продукти
+                    <div className="text-center mb-5">
+                        <h2 className="fw-bold">Нашите продукти</h2>
+                        <p className="text-muted">
+                            Всичко необходимо за по-добро учене на едно място. <br />
+                            Практически тестове, полезни ръководства и работещи планери за ученици и учители.
+                        </p>
+                    </div>
+
+                    <div className="row">
+                        {currentProducts.length > 0 ? (
+                            currentProducts.map(x => (
+                                <ProductItem key={x.id} product={x} />
+                            ))
+                        ) : (
+                            <div className="text-center text-muted">
+                                Няма налични продукти
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <div className="d-flex justify-content-center mt-5">
+                            <nav>
+                                <ul className="pagination">
+
+                                    {[...Array(totalPages)].map((_, index) => (
+                                        <li
+                                            key={index}
+                                            className={`page-item ${currentPage === index + 1 ? "active" : ""
+                                                }`}
+                                        >
+                                            <button
+                                                className="page-link"
+                                                onClick={() => goToPage(index + 1)}
+                                                style={
+                                                    currentPage === index + 1
+                                                        ? {
+                                                            background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                                            border: "none",
+                                                            color: "white"
+                                                        }
+                                                        : {}
+                                                }
+                                            >
+                                                {index + 1}
+                                            </button>
+                                        </li>
+                                    ))}
+
+                                </ul>
+                            </nav>
                         </div>
                     )}
+
                 </div>
-
-                {/* Pagination */}
-                {totalPages > 1 && (
-                    <div className="d-flex justify-content-center mt-5">
-                        <nav>
-                            <ul className="pagination">
-
-                                {[...Array(totalPages)].map((_, index) => (
-                                    <li
-                                        key={index}
-                                        className={`page-item ${currentPage === index + 1 ? "active" : ""
-                                            }`}
-                                    >
-                                        <button
-                                            className="page-link"
-                                            onClick={() => goToPage(index + 1)}
-                                            style={
-                                                currentPage === index + 1
-                                                    ? {
-                                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
-                                                        border: "none",
-                                                        color: "white"
-                                                    }
-                                                    : {}
-                                            }
-                                        >
-                                            {index + 1}
-                                        </button>
-                                    </li>
-                                ))}
-
-                            </ul>
-                        </nav>
-                    </div>
-                )}
-
-            </div>
-        </section>
+            </section>
+        </>
     );
 }

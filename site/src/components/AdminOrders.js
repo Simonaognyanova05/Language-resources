@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import {
     collection,
     getDocs,
@@ -82,84 +83,91 @@ export default function AdminOrders() {
     };
 
     return (
-        <section className="container my-5">
-            <h2 className="mb-4 text-center">Админ – Поръчки</h2>
+        <>
+            <Helmet>
+                <title>Поръчки - Админ | Електронни ресурси за сваляне</title>
+                <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+                <link rel="canonical" href="https://language-center-varna.eu/orders" />
+            </Helmet>
+            <section className="container my-5">
+                <h2 className="mb-4 text-center">Админ – Поръчки</h2>
 
-            {orders.length === 0 ? (
-                <p className="text-center text-muted">Няма поръчки.</p>
-            ) : (
-                orders.map(order => (
+                {orders.length === 0 ? (
+                    <p className="text-center text-muted">Няма поръчки.</p>
+                ) : (
+                    orders.map(order => (
 
-                    <div key={order.id} className="card shadow border-0 p-4 mb-4">
+                        <div key={order.id} className="card shadow border-0 p-4 mb-4">
 
-                        <div className="d-flex justify-content-between flex-wrap">
-                            <div>
-                                <h5>Поръчка #{order.orderNumber}</h5>
-                                <small className="text-muted">
-                                    {order.createdAt?.toDate().toLocaleString()}
-                                </small>
+                            <div className="d-flex justify-content-between flex-wrap">
+                                <div>
+                                    <h5>Поръчка #{order.orderNumber}</h5>
+                                    <small className="text-muted">
+                                        {order.createdAt?.toDate().toLocaleString()}
+                                    </small>
+                                </div>
+
+                                <span className={`badge bg-${order.status === "pending"
+                                    ? "warning"
+                                    : order.status === "paid"
+                                        ? "success"
+                                        : "primary"
+                                    }`} style={{ height: "20px" }}>
+                                    {order.status}
+                                </span>
                             </div>
 
-                            <span className={`badge bg-${order.status === "pending"
-                                ? "warning"
-                                : order.status === "paid"
-                                    ? "success"
-                                    : "primary"
-                                }`} style={{ height: "20px" }}>
-                                {order.status}
-                            </span>
+                            <hr />
+
+                            <div className="mb-3">
+                                <strong>Клиент:</strong> {order.customer.firstName} {order.customer.lastName}<br />
+                                <strong>Имейл:</strong> {order.customer.email}<br />
+                                <strong>Телефон:</strong> {order.customer.phone}
+                            </div>
+
+                            <div className="mb-3">
+                                <strong>Продукти:</strong>
+
+                                {order.items.map((item, i) => (
+                                    <div key={i} className="d-flex justify-content-between border-bottom py-1">
+                                        <span>{item.title} x {item.quantity}</span>
+                                        <span>{Number(item.price).toFixed(2)}€</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="d-flex justify-content-between mt-3">
+                                <h5>Общо:</h5>
+                                <h5>{Number(order.total).toFixed(2)}€</h5>
+                            </div>
+
+                            <div className="mt-3 d-flex gap-2">
+                                <button
+                                    className="btn btn-warning btn-sm"
+                                    onClick={() => changeStatus(order.id, "pending", order)}
+                                >
+                                    Pending
+                                </button>
+
+                                <button
+                                    className="btn btn-success btn-sm"
+                                    onClick={() => changeStatus(order.id, "paid", order)}
+                                >
+                                    Paid
+                                </button>
+
+                                <button
+                                    className="btn btn-primary btn-sm"
+                                    onClick={() => changeStatus(order.id, "shipped", order)}
+                                >
+                                    Shipped
+                                </button>
+                            </div>
+
                         </div>
-
-                        <hr />
-
-                        <div className="mb-3">
-                            <strong>Клиент:</strong> {order.customer.firstName} {order.customer.lastName}<br />
-                            <strong>Имейл:</strong> {order.customer.email}<br />
-                            <strong>Телефон:</strong> {order.customer.phone}
-                        </div>
-
-                        <div className="mb-3">
-                            <strong>Продукти:</strong>
-
-                            {order.items.map((item, i) => (
-                                <div key={i} className="d-flex justify-content-between border-bottom py-1">
-                                    <span>{item.title} x {item.quantity}</span>
-                                    <span>{Number(item.price).toFixed(2)}€</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="d-flex justify-content-between mt-3">
-                            <h5>Общо:</h5>
-                            <h5>{Number(order.total).toFixed(2)}€</h5>
-                        </div>
-
-                        <div className="mt-3 d-flex gap-2">
-                            <button
-                                className="btn btn-warning btn-sm"
-                                onClick={() => changeStatus(order.id, "pending", order)}
-                            >
-                                Pending
-                            </button>
-
-                            <button
-                                className="btn btn-success btn-sm"
-                                onClick={() => changeStatus(order.id, "paid", order)}
-                            >
-                                Paid
-                            </button>
-
-                            <button
-                                className="btn btn-primary btn-sm"
-                                onClick={() => changeStatus(order.id, "shipped", order)}
-                            >
-                                Shipped
-                            </button>
-                        </div>
-
-                    </div>
-                ))
-            )}
-        </section>
+                    ))
+                )}
+            </section>
+        </>
     );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import emailjs from "@emailjs/browser";
 import { collection, getDocs, addDoc, serverTimestamp, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
@@ -108,146 +109,153 @@ export default function Checkout() {
     };
 
     return (
-        <section className="py-5" style={{ background: "#f8f9fa" }}>
-            <div className="container">
-                <h2 className="text-center fw-bold mb-5">
-                    Завършване на поръчката
-                </h2>
+        <>
+            <Helmet>
+                <title>Завършване на поръчка | Електронни ресурси за сваляне</title>
+                <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+                <link rel="canonical" href="https://language-center-varna.eu/checkout" />
+            </Helmet>
+            <section className="py-5" style={{ background: "#f8f9fa" }}>
+                <div className="container">
+                    <h2 className="text-center fw-bold mb-5">
+                        Завършване на поръчката
+                    </h2>
 
-                <div className="row g-5">
+                    <div className="row g-5">
 
-                    {/* FORM */}
-                    <div className="col-lg-7">
-                        <div className="bg-white p-5 rounded-4 shadow-sm">
+                        {/* FORM */}
+                        <div className="col-lg-7">
+                            <div className="bg-white p-5 rounded-4 shadow-sm">
 
-                            <h5 className="fw-semibold mb-4">
-                                Данни за клиента
-                            </h5>
+                                <h5 className="fw-semibold mb-4">
+                                    Данни за клиента
+                                </h5>
 
-                            <form onSubmit={handleSubmit}>
+                                <form onSubmit={handleSubmit}>
 
-                                <div className="row">
-                                    <div className="col-md-6 mb-3">
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            placeholder="Име"
-                                            className="form-control rounded-pill p-3"
-                                            required
-                                            onChange={handleChange}
-                                        />
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                name="firstName"
+                                                placeholder="Име"
+                                                className="form-control rounded-pill p-3"
+                                                required
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                name="lastName"
+                                                placeholder="Фамилия"
+                                                className="form-control rounded-pill p-3"
+                                                required
+                                                onChange={handleChange}
+                                            />
+                                        </div>
                                     </div>
 
-                                    <div className="col-md-6 mb-3">
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            placeholder="Фамилия"
-                                            className="form-control rounded-pill p-3"
-                                            required
-                                            onChange={handleChange}
-                                        />
-                                    </div>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Имейл"
+                                        className="form-control rounded-pill p-3 mb-3"
+                                        required
+                                        onChange={handleChange}
+                                    />
+
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        placeholder="Телефон"
+                                        className="form-control rounded-pill p-3 mb-3"
+                                        required
+                                        onChange={handleChange}
+                                    />
+
+                                    <textarea
+                                        name="notes"
+                                        placeholder="Бележки към поръчката"
+                                        className="form-control rounded-4 p-3 mb-4"
+                                        rows="3"
+                                        onChange={handleChange}
+                                    ></textarea>
+
+                                    <button
+                                        className="btn w-100 py-3"
+                                        disabled={loading}
+                                        style={{
+                                            background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                            color: "white",
+                                            border: "none",
+                                            borderRadius: "50px",
+                                            fontWeight: "600",
+                                            transition: "0.3s"
+                                        }}
+                                        onMouseOver={(e) => e.target.style.opacity = "0.9"}
+                                        onMouseOut={(e) => e.target.style.opacity = "1"}
+                                    >
+                                        {loading ? "Обработва се..." : "Заяви поръчката"}
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        {/* SUMMARY */}
+                        <div className="col-lg-5">
+
+                            {/* TOTAL CARD */}
+                            <div className="bg-white p-5 rounded-4 shadow-sm mb-4"
+                                style={{ top: "100px" }}>
+
+                                <h5 className="fw-semibold mb-4">
+                                    Обобщение
+                                </h5>
+
+                                <div className="d-flex justify-content-between mb-3">
+                                    <span>Междинна сума:</span>
+                                    <span>{totalPrice.toFixed(2)} €</span>
                                 </div>
 
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Имейл"
-                                    className="form-control rounded-pill p-3 mb-3"
-                                    required
-                                    onChange={handleChange}
-                                />
+                                <hr />
 
-                                <input
-                                    type="text"
-                                    name="phone"
-                                    placeholder="Телефон"
-                                    className="form-control rounded-pill p-3 mb-3"
-                                    required
-                                    onChange={handleChange}
-                                />
-
-                                <textarea
-                                    name="notes"
-                                    placeholder="Бележки към поръчката"
-                                    className="form-control rounded-4 p-3 mb-4"
-                                    rows="3"
-                                    onChange={handleChange}
-                                ></textarea>
-
-                                <button
-                                    className="btn w-100 py-3"
-                                    disabled={loading}
-                                    style={{
-                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
-                                        color: "white",
-                                        border: "none",
-                                        borderRadius: "50px",
-                                        fontWeight: "600",
-                                        transition: "0.3s"
-                                    }}
-                                    onMouseOver={(e) => e.target.style.opacity = "0.9"}
-                                    onMouseOut={(e) => e.target.style.opacity = "1"}
-                                >
-                                    {loading ? "Обработва се..." : "Заяви поръчката"}
-                                </button>
-
-                            </form>
-                        </div>
-                    </div>
-
-                    {/* SUMMARY */}
-                    <div className="col-lg-5">
-
-                        {/* TOTAL CARD */}
-                        <div className="bg-white p-5 rounded-4 shadow-sm mb-4"
-                            style={{ top: "100px" }}>
-
-                            <h5 className="fw-semibold mb-4">
-                                Обобщение
-                            </h5>
-
-                            <div className="d-flex justify-content-between mb-3">
-                                <span>Междинна сума:</span>
-                                <span>{totalPrice.toFixed(2)} €</span>
+                                <div className="d-flex justify-content-between align-items-center mt-3">
+                                    <h5 className="fw-bold m-0">Общо:</h5>
+                                    <h4
+                                        className="fw-bold m-0"
+                                        style={{
+                                            background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                            WebkitBackgroundClip: "text",
+                                            WebkitTextFillColor: "transparent"
+                                        }}
+                                    >
+                                        {totalPrice.toFixed(2)} €
+                                    </h4>
+                                </div>
                             </div>
 
-                            <hr />
+                            {/* BANK INFO */}
+                            <div className="bg-white p-5 rounded-4 shadow-sm">
+                                <h6 className="fw-semibold mb-3">
+                                    Информация за плащане
+                                </h6>
 
-                            <div className="d-flex justify-content-between align-items-center mt-3">
-                                <h5 className="fw-bold m-0">Общо:</h5>
-                                <h4
-                                    className="fw-bold m-0"
-                                    style={{
-                                        background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
-                                        WebkitBackgroundClip: "text",
-                                        WebkitTextFillColor: "transparent"
-                                    }}
-                                >
-                                    {totalPrice.toFixed(2)} €
-                                </h4>
+                                <div className="small text-muted" style={{ lineHeight: "1.8" }}>
+                                    <p><strong>Основател:</strong> Дар Слово ЕООД</p>
+                                    <p><strong>IBAN:</strong> BG15 BPBI 7942 1027 5407 01</p>
+                                    <p><strong>BIC:</strong> BPBIBGSF</p>
+                                    <p><strong>Основание:</strong> Името на един от материалите</p>
+                                </div>
                             </div>
-                        </div>
 
-                        {/* BANK INFO */}
-                        <div className="bg-white p-5 rounded-4 shadow-sm">
-                            <h6 className="fw-semibold mb-3">
-                                Информация за плащане
-                            </h6>
-
-                            <div className="small text-muted" style={{ lineHeight: "1.8" }}>
-                                <p><strong>Основател:</strong> Дар Слово ЕООД</p>
-                                <p><strong>IBAN:</strong> BG15 BPBI 7942 1027 5407 01</p>
-                                <p><strong>BIC:</strong> BPBIBGSF</p>
-                                <p><strong>Основание:</strong> Името на един от материалите</p>
-                            </div>
                         </div>
 
                     </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from 'react-router-dom';
 import { writeComment } from "../../services/writeComment";
 import { getComments } from "../../services/getComments";
@@ -40,64 +41,72 @@ export default function Testimonial() {
     };
 
     return (
-        <section className="py-5">
-            <div className="container">
+        <>
+            <Helmet>
+                <title>Учебен център Варна | Електронни ресурси за сваляне</title>
+                <meta name="description" content="Това е описанието на моя сайт, което ще се появи в резултатите на Google." />
+                <link rel="canonical" href="https://language-center-varna.eu/" />
+            </Helmet>
 
-                <h2 className="text-center mb-5">
-                    Какво казват нашите клиенти
-                </h2>
+            <section className="py-5">
+                <div className="container">
 
-                {/* Testimonials Grid */}
-                <div className="row mb-5">
+                    <h2 className="text-center mb-5">
+                        Какво казват нашите клиенти
+                    </h2>
 
-                    {comment.map(x => <CommentItem key={x.id} comment={x}/>)}
+                    {/* Testimonials Grid */}
+                    <div className="row mb-5">
 
-                </div>
+                        {comment.map(x => <CommentItem key={x.id} comment={x} />)}
 
-                {/* Comment Form */}
-                <div className="card border-0 shadow-lg p-5">
-                    <h4 className="mb-4 text-center">
-                        Оставете вашето мнение
-                    </h4>
+                    </div>
 
-                    <form onSubmit={handleSubmit}>
-                        <div className="row">
+                    {/* Comment Form */}
+                    <div className="card border-0 shadow-lg p-5">
+                        <h4 className="mb-4 text-center">
+                            Оставете вашето мнение
+                        </h4>
 
-                            <div className="col-md-6 mb-3">
-                                <input
-                                    type="text"
-                                    name="name"
-                                    className="form-control form-control-lg"
-                                    placeholder="Вашето име"
-                                />
+                        <form onSubmit={handleSubmit}>
+                            <div className="row">
+
+                                <div className="col-md-6 mb-3">
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className="form-control form-control-lg"
+                                        placeholder="Вашето име"
+                                    />
+                                </div>
+
+                                <div className="col-md-12 mb-3">
+                                    <textarea
+                                        name="comment"
+                                        rows="4"
+                                        className="form-control form-control-lg"
+                                        placeholder="Вашият коментар..."
+                                    />
+                                </div>
+
                             </div>
 
-                            <div className="col-md-12 mb-3">
-                                <textarea
-                                    name="comment"
-                                    rows="4"
-                                    className="form-control form-control-lg"
-                                    placeholder="Вашият коментар..."
-                                />
-                            </div>
+                            <button
+                                type="submit"
+                                className="btn btn-lg w-100"
+                                style={{
+                                    background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
+                                    color: "white",
+                                    fontWeight: "600"
+                                }}
+                            >
+                                Изпрати коментар
+                            </button>
+                        </form>
+                    </div>
 
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="btn btn-lg w-100"
-                            style={{
-                                background: "linear-gradient(135deg, #B21F7A, #6A1B9A)",
-                                color: "white",
-                                fontWeight: "600"
-                            }}
-                        >
-                            Изпрати коментар
-                        </button>
-                    </form>
                 </div>
-
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
