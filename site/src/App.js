@@ -21,6 +21,7 @@ import AdminOrders from "./components/AdminOrders";
 import OrderSteps from "./components/OrderSteps/OrderSteps";
 import CookiePolicy from "./components/CookiePolicy";
 import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
           <Route path="/orders" element={<AdminOrders />} />
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+
         </Routes>
         <Footer />
       </div>
