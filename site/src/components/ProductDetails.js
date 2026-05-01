@@ -194,22 +194,29 @@ export default function ProductDetails() {
                                         {Number(product.price).toFixed(2)}€/{Number(product.price * 1.95).toFixed(2)} лв.
                                     </h3>
 
-                                    <button
-                                        className="btn w-100 py-3 mb-3 shadow-sm"
-                                        onClick={handleAddToCart}
-                                        style={{
-                                            background: "linear-gradient(135deg,#B21F7A,#6A1B9A)",
-                                            color: "white",
-                                            border: "none",
-                                            borderRadius: "50px",
-                                            fontWeight: "600",
-                                            transition: "transform 0.2s"
-                                        }}
-                                        onMouseOver={(e) => e.target.style.transform = "scale(1.02)"}
-                                        onMouseOut={(e) => e.target.style.transform = "scale(1)"}
-                                    >
-                                        Добави в количката
-                                    </button>
+                                    {user.email ? (
+                                        <button
+                                            className="btn w-100 py-3 mb-3 shadow-sm"
+                                            onClick={handleAddToCart}
+                                            style={{
+                                                background: "linear-gradient(135deg,#B21F7A,#6A1B9A)",
+                                                color: "white",
+                                                border: "none",
+                                                borderRadius: "50px",
+                                                fontWeight: "600",
+                                                transition: "transform 0.2s"
+                                            }}
+                                            onMouseOver={(e) => e.target.style.transform = "scale(1.02)"}
+                                            onMouseOut={(e) => e.target.style.transform = "scale(1)"}
+                                        >
+                                            Добави в количката
+                                        </button>
+                                    ) : (
+                                        <p className="text-danger fw-bold mt-3">
+                                            Необходимо е да се регистрирате, за да направите поръчка
+                                        </p>
+                                    )}
+
 
                                     {user && isAdmin(user.email) && (
                                         <div className="d-grid gap-2 mt-4">

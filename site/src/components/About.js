@@ -111,7 +111,7 @@ export default function About() {
                 </div>
 
                 {/* ===== IMAGE GALLERY ===== */}
-                <div className="mb-5">
+                {/* <div className="mb-5">
                     <h3 className="fw-bold text-center mb-4">Нашите сертификати</h3>
 
                     <div className="row gallery-row">
@@ -135,7 +135,7 @@ export default function About() {
                         </div>
 
                     </div>
-                </div>
+                </div> */}
 
 
             </section>

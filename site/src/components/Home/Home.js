@@ -69,6 +69,7 @@ export default function Home() {
                                 </p>
 
                                 <div className="mt-4 hero-buttons">
+                                    
                                     <Link to="/products" className="btn btn-light btn-lg me-3">
                                         Каталог
                                     </Link>
