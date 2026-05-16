@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://language-center-varna.eu/</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://language-center-varna.eu/about</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://language-center-varna.eu/products</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://language-center-varna.eu/contacts</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://language-center-varna.eu/info</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://language-center-varna.eu/cookies</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.30</priority>
+  </url>
+</urlset>

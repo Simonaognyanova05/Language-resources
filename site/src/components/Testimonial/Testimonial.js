@@ -28,7 +28,7 @@ export default function Testimonial() {
         try {
             const result = await writeComment({ name, comment });
 
-            if (result.status == 200) {
+            if (result.status === 200) {
                 alert("Коментарът е създаден успешно!");
                 navigate('/');
                 e.target.reset();

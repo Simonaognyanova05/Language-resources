@@ -3,7 +3,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 export async function createProduct(title, description, price, img1, img2, img3, img4, img5, img6, img7, img8, productLink) {
     try {
-        const docRef = await addDoc(collection(db, "products"), {
+        await addDoc(collection(db, "products"), {
             title, description, price, img1, img2, img3, img4, img5, img6, img7, img8, productLink,
             createdAt: new Date()
         });

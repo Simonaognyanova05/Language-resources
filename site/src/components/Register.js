@@ -14,7 +14,7 @@ export default function Register() {
 
         const { email, password, rePass } = Object.fromEntries(formData);
 
-        if (password != rePass) {
+        if (password !== rePass) {
             alert("Паролите не съвпадат!");
             return;
         }
