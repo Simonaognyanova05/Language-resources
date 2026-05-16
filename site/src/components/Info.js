@@ -18,7 +18,7 @@ export default function Info() {
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="">
+                            <a href="/">
                                 <img src="images/call.png" alt="" />
                                 <span>
                                     Call : +012334567890
@@ -26,7 +26,7 @@ export default function Info() {
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="">
+                            <a href="/">
                                 <img src="images/mail.png" alt="" />
                                 <span>
                                     demo@gmail.com
@@ -38,7 +38,7 @@ export default function Info() {
                 <div class="row">
                     <div class="col-md-8 col-lg-9">
                         <div class="info_form">
-                            <form action="">
+                            <form>
                                 <input type="text" placeholder="Enter your email" />
                                 <button>
                                     subscribe
@@ -49,22 +49,22 @@ export default function Info() {
                     <div class="col-md-4 col-lg-3">
                         <div class="info_social">
                             <div>
-                                <a href="">
+                                <a href="/">
                                     <img src="images/facebook-logo-button.png" alt="" />
                                 </a>
                             </div>
                             <div>
-                                <a href="">
+                                <a href="/">
                                     <img src="images/twitter-logo-button.png" alt="" />
                                 </a>
                             </div>
                             <div>
-                                <a href="">
+                                <a href="/">
                                     <img src="images/linkedin.png" alt="" />
                                 </a>
                             </div>
                             <div>
-                                <a href="">
+                                <a href="/">
                                     <img src="images/instagram.png" alt="" />
                                 </a>
                             </div>
